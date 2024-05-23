@@ -1,4 +1,4 @@
 package team03_AlloverCommerceTestNG.tests;
 
-public class US02_Register_WishList {
+public class US08_Register_WishList {
 }
