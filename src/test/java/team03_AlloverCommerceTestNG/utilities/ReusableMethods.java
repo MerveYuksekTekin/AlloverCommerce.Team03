@@ -7,6 +7,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import team03_AlloverCommerceTestNG.pages.Pages;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -18,8 +19,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReusableMethods {
-
-
+    static Pages allPages = new Pages();
+    public static void userVendorlogin(String email, String password) {
+        allPages.userVendorLoginPage().emailBox.sendKeys(email);
+        allPages.userVendorLoginPage().passwordBox.sendKeys(password);
+        allPages.userVendorLoginPage().signInButton.click();
+    }
 
     protected ExtentReports extentReports;
     protected ExtentHtmlReporter extentHtmlReporter;
