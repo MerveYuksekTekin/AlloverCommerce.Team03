@@ -7,6 +7,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.DataProvider;
 import team03_AlloverCommerceTestNG.pages.Pages;
 
 import java.io.IOException;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReusableMethods {
+
     static Pages allPages = new Pages();
     public static void userVendorlogin(String email, String password) {
         allPages.userVendorLoginPage().emailBox.sendKeys(email);
@@ -192,4 +194,6 @@ public class ReusableMethods {
         String attribute_Value = (String) js.executeScript("return document.getElementById('" + id + "')." + attributeName);
         System.out.println("Attribute Value: = " + attribute_Value);
     }
+
+
 }
