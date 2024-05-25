@@ -20,5 +20,6 @@ public class P1_HomePage {
     @FindBy(partialLinkText = "My Account")
     public WebElement myAccountButton;
 
-
+@FindBy(xpath = "//span[.='Register']")
+    public WebElement registerButton;
 }
