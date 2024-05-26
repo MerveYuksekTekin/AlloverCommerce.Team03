@@ -18,4 +18,7 @@ public class P3_UserVendorLoginPage {
 
     @FindBy(css = "button[name='login']")
     public WebElement signInButton;
+
+    @FindBy(xpath = "//*[.='Wrong username or password.']")
+    public WebElement warningMessage;
 }
