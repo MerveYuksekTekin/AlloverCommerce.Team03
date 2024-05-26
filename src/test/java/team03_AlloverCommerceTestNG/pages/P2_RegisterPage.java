@@ -12,4 +12,5 @@ public class P2_RegisterPage {
 
     @FindBy(linkText = "Become a Vendor")
     public WebElement becomeAVendorLink;
+
 }
