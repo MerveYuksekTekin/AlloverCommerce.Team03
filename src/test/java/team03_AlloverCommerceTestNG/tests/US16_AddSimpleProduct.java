@@ -35,7 +35,7 @@ public class US16_AddSimpleProduct {
         ReusableMethods.userVendorlogin("bert.emit@floodouts.com", "wrgyx9K?");
 
         // Sign out a tiklayarak My account sayfasina gir
-//        allPages.homePage().signOutButton.click();
+        allPages.homePage().signOutButton.click();
         //Sol taraftaki listeden Store Manager i tikla
         allPages.myAccountPage().storeManagerButton.click();
         // My Store kisminda Products i tikla
