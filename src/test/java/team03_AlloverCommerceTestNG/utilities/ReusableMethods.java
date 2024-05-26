@@ -7,11 +7,9 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.DataProvider;
 import team03_AlloverCommerceTestNG.pages.Pages;
 
-import java.awt.*;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -22,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReusableMethods {
+
     static Pages allPages = new Pages();
     public static void userVendorlogin(String email, String password) {
         allPages.userVendorLoginPage().emailBox.sendKeys(email);
@@ -196,61 +195,5 @@ public class ReusableMethods {
         System.out.println("Attribute Value: = " + attribute_Value);
     }
 
-    //File Upload Robot Class
-    public void uploadFilePath(String dosyaYolu) {
-        try {
-            waitForSecond(3); // 3 saniye bekletir. Bu, kodun başka işlemler için hazır olmasını sağlar.
-            StringSelection stringSelection = new StringSelection(dosyaYolu);
-            //Verilen Dosya yolunu bir StringSelection objectine dönüştürürüz
-            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
-            //verilen stringSelection'i (bu durumda dosya yolu), daha sonra başka bir yere yapıştırmak üzere sistem panosuna kopyalamaktır.
-            Robot robot = new Robot();
-            // Robot sınıfından bir object olustururuz, Bu class javadan gelir ve klavye ve mouse etkileşimlerini simüle eder.
-            robot.keyPress(KeyEvent.VK_CONTROL);
-            robot.keyPress(KeyEvent.VK_V);
-            // CTRL+V tuslarina basar dolayisiyla panodaki veriyi yapıştırır.
-            robot.keyRelease(KeyEvent.VK_CONTROL);
-            robot.keyRelease(KeyEvent.VK_V);
-            // CTRL ve V tuşlarından elini kaldirir
-            robot.delay(3000);
-            // 3 saniye bekler, bu süre içerisinde yapıştırılan verinin işlenmesini sağlar.
-            robot.keyPress(KeyEvent.VK_ENTER);
-            robot.keyRelease(KeyEvent.VK_ENTER);
-            // ENTER tuşuna basarak yapıştırma işlemini onaylar veya diyalog penceresini kapatır.
-            robot.delay(3000);
-            // Sonraki işlemler için ek 3 saniye bekler.
-        } catch (Exception ignored) {
-            // Herhangi bir hata oluşursa, bu hata yoksayılır.
-        }
-    }
-
-
-    //extent rapora ekran görüntüsü ekleme
-    public void addScreenShotToReport() {
-
-        String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
-        String path = "src\\test\\java\\screenshots\\NEWW" + date + ".png";
-        TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
-        try {
-            Files.write(Paths.get(path), ts.getScreenshotAs(OutputType.BYTES));
-            extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "\\" + path);
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    //rapora Webelement screen shot ekleme
-    public void addScreenShotOfWebElementToReport(WebElement webElement) {
-
-        String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
-        String path = "src\\test\\java\\screenshots\\webElementSS" + date + ".png";
-        try {
-            Files.write(Paths.get(path), webElement.getScreenshotAs(OutputType.BYTES));
-            extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "\\" + path);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
 }
