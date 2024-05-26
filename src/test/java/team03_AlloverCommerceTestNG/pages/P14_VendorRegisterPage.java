@@ -26,4 +26,7 @@ public class P14_VendorRegisterPage {
 
     @FindBy(xpath = "(//h1)[2]")
     public WebElement welcomeToAllevorCommerce;
+    @FindBy(css = "(//div[contains(text(),'Email: This field is required.')])[1]")
+    public WebElement emailWrongText;
+
 }
