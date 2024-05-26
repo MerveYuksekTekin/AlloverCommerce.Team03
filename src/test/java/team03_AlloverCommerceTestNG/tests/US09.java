@@ -32,19 +32,10 @@ public class US09 {
     public void tc01() {
 
        // Email boxa geçerli bir email gir
-        Driver.getDriver().switchTo().newWindow(WindowType.TAB);
-        Driver.getDriver().get("https://www.fakemail.net/");
-        String email=Driver.getDriver().findElement(By.id("email")).getText();
-        ReusableMethods.switchToWindow(0);
-        allPages.vendorRegisterPage().emailBox.sendKeys(email);
+        ReusableMethods.vendorRegisterEmail();
 
        // Verification Code boxa geçerli bir code gir
-        ReusableMethods.switchToWindow(1);
-        Driver.getDriver().findElement(By.xpath("(//tr[@data-href='2'])[1]")).click();
-        Driver.getDriver().switchTo().frame("iframeMail");
-        String code=Driver.getDriver().findElement(By.tagName("b")).getText();
-        ReusableMethods.switchToWindow(0);
-        allPages.vendorRegisterPage().verificationCodeBox.sendKeys(code);
+        ReusableMethods.vendorRegisterCode();
 
        // Password boxa geçerli bir veri gir
         allPages.vendorRegisterPage().passwordBox.sendKeys("As1.As1.");
@@ -287,11 +278,7 @@ public class US09 {
     @Test
     public void tc14() {
        //Email boxa geçerli bir email adresi gir
-        Driver.getDriver().switchTo().newWindow(WindowType.TAB);
-        Driver.getDriver().get("https://www.fakemail.net/");
-        String email=Driver.getDriver().findElement(By.id("email")).getText();
-        ReusableMethods.switchToWindow(0);
-        allPages.vendorRegisterPage().emailBox.sendKeys(email);
+        ReusableMethods.vendorRegisterEmail();
 
         //Email adresinin girildiğini doğrula
          }
@@ -299,107 +286,179 @@ public class US09 {
     @Test
     public void tc15() {
        //Email boxa geçerli bir email adresi gir
+        ReusableMethods.vendorRegisterEmail();
        //Verification Code boxa geçerli bir code girilir
+        ReusableMethods.vendorRegisterCode();
        //Code girildikten sonra beklenen mesajın geldiğini doğrula
     }
 
     @Test
     public void tc16() {
        //Email boxa geçerli bir email adresi gir
+        ReusableMethods.vendorRegisterEmail();
        //Verification Code boxa geçerli bir code gir
+        ReusableMethods.vendorRegisterCode();
        //Code'un text kutusuna girildiğini doğrula
     }
 
     @Test
     public void tc17() {
         //Email boxa geçerli bir email gir
+        ReusableMethods.vendorRegisterEmail();
+
         //Verification Code boxa geçerli bir code gir
+        ReusableMethods.vendorRegisterCode();
+
         //Password boxa küçük harf, büyük harf,rakam ve special karakter içeren bir veri gir
+        allPages.vendorRegisterPage().passwordBox.sendKeys("As1.As1.");
+
         //Confirm Password boxa aynı passwordu tekrar gir
+        allPages.vendorRegisterPage().passwordBox.sendKeys("As1.As1.");
+
+        // Register butonuna tıkla
+        ReusableMethods.click(allPages.vendorRegisterPage().registerButton);
         //Password boxa küçük harf, büyük harf,rakam ve special karakter içeren veri girdiğini doğrula
     }
 
     @Test
     public void tc18() {
       // Email boxa geçerli bir email gir
+        ReusableMethods.vendorRegisterEmail();
       // Verification Code boxa geçerli bir code gir
+        ReusableMethods.vendorRegisterCode();
       // Password boxa veri girme
+        allPages.vendorRegisterPage().passwordBox.sendKeys("");
       // Confirm Password boxa aynı passwordu tekrar gir
+        allPages.vendorRegisterPage().passwordBox.sendKeys("");
+        // Register butonuna tıkla
+        ReusableMethods.click(allPages.vendorRegisterPage().registerButton);
       // Password kutusu boş bıraktığında kayıt işlemi gerçekleşmediğini doğrula
     }
 
     @Test
     public void tc19() {
        // Email boxa geçerli bir email gir
+        ReusableMethods.vendorRegisterEmail();
        // Verification Code boxa geçerli bir code gir
+        ReusableMethods.vendorRegisterCode();
        // Password boxa küçük harf içermeyip, büyük harf,rakam ve special karakter içeren bir veri gir
+        allPages.vendorRegisterPage().passwordBox.sendKeys("AS1.AS1.");
        // Confirm Password boxa aynı passwordu tekrar gir
+        allPages.vendorRegisterPage().passwordBox.sendKeys("AS1.AS1.");
+        // Register butonuna tıkla
+        ReusableMethods.click(allPages.vendorRegisterPage().registerButton);
        // Password boxa küçük harf içermeyip, büyük harf,rakam ve special karakter içermeyen veri girildiğinde kayıt işleminin gerçekleşmediğini doğrula
     }
     @Test
     public void tc20() {
        // Email boxa geçerli bir email gir
+        ReusableMethods.vendorRegisterEmail();
        // Verification Code boxa geçerli bir code gir
+        ReusableMethods.vendorRegisterCode();
        // Password boxa küçük harf , rakam ve special karakter içerip ,büyük harf içermeyen bir veri gir
+        allPages.vendorRegisterPage().passwordBox.sendKeys("as1.as1.");
        // Confirm Password boxa aynı passwordu tekrar gir
+        allPages.vendorRegisterPage().passwordBox.sendKeys("as1.as1.");
+        // Register butonuna tıkla
+        ReusableMethods.click(allPages.vendorRegisterPage().registerButton);
        // Password boxa küçük harf , rakam ve special karakter içerip ,büyük harf içermeyen bir veri girildiğinde kayıt işleminin gerçekleşmediğini doğrula
     }
     @Test
     public void tc21() {
        // Email boxa geçerli bir email gir
+        ReusableMethods.vendorRegisterEmail();
        // Verification Code boxa geçerli bir code gir
+        ReusableMethods.vendorRegisterCode();
        // Password küçük harf , büyük harf ve special karakter içerip ,rakam içermeyen bir veri gir
+        allPages.vendorRegisterPage().passwordBox.sendKeys("As.As.");
        // Confirm Password boxa aynı passwordu tekrar gir
+        allPages.vendorRegisterPage().passwordBox.sendKeys("As.As.");
+        // Register butonuna tıkla
+        ReusableMethods.click(allPages.vendorRegisterPage().registerButton);
        // Password küçük harf , büyük harf ve special karakter içerip ,rakam içermeyen bir veri girdiğimizde kayıt işleminin gerçekleşmediğini doğrula
     }
     @Test
     public void tc22() {
       // Email boxa geçerli bir email gir
+        ReusableMethods.vendorRegisterEmail();
       // Verification Code boxa geçerli bir code gir
+        ReusableMethods.vendorRegisterCode();
       // Password boxa küçük harf , büyük harf ve rakam içerip ,special karakter içermeyen veri gir
+        allPages.vendorRegisterPage().passwordBox.sendKeys("As1As1");
       // Confirm Password boxa aynı passwordu tekrar gir
+        allPages.vendorRegisterPage().passwordBox.sendKeys("As1As1");
+        // Register butonuna tıkla
+        ReusableMethods.click(allPages.vendorRegisterPage().registerButton);
       // Password boxa küçük harf , büyük harf ve rakam içerip ,special karakter içermeyen bir veri girdiğinde kayıt işleminin gerçeklemediğini doğrula
     }
     @Test
     public void tc23() {
        // Email boxa geçerli bir email gir
+        ReusableMethods.vendorRegisterEmail();
        // Verification Code boxa geçerli bir code gir
+        ReusableMethods.vendorRegisterCode();
        // Password boxa geçerli bir veri gir
+        allPages.vendorRegisterPage().passwordBox.sendKeys("As1.As1.");
        // Confirm Password boxa aynı passwordu tekrar gir
+        allPages.vendorRegisterPage().passwordBox.sendKeys("As1.As1.");
        // Passwordun tekrar yazıldığını doğrula
     }
     @Test
     public void tc24() {
       // Email boxa geçerli bir email gir
+        ReusableMethods.vendorRegisterEmail();
       // Verification Code boxa geçerli bir code gir
+        ReusableMethods.vendorRegisterCode();
       // Password boxa geçerli bir veri gir
+        allPages.vendorRegisterPage().passwordBox.sendKeys("As1.As1.");
       // Confirm Password boxu boş bırak
+        allPages.vendorRegisterPage().passwordBox.sendKeys("");
+// Register butonuna tıkla
+        ReusableMethods.click(allPages.vendorRegisterPage().registerButton);
       // Confim Password box boş bırakıldığında kayıt işleminin gerçekleşmediğini doğrula
     }
     @Test
     public void tc25() {
        // Email boxa geçerli bir email gir
+        ReusableMethods.vendorRegisterEmail();
        // Verification Code boxa geçerli bir code gir
+        ReusableMethods.vendorRegisterCode();
        // Password boxa geçerli bir veri gir
+        allPages.vendorRegisterPage().passwordBox.sendKeys("As1.As1.");
        // Confirm Password boxa farklı veri gir
+        allPages.vendorRegisterPage().passwordBox.sendKeys("As1.As1.");
+        // Register butonuna tıkla
+        ReusableMethods.click(allPages.vendorRegisterPage().registerButton);
        // Confim Password box'a geçersiz veri girildiğinde kayıt işleminin gerçekleşmediğini doğrula
     }
     @Test
     public void tc26() {
       // Email boxa geçerli bir email gir
+        ReusableMethods.vendorRegisterEmail();
       // Verification Code boxa geçerli bir code gir
+        ReusableMethods.vendorRegisterCode();
       // Password boxa geçerli bir veri gir
+        allPages.vendorRegisterPage().passwordBox.sendKeys("As1.As1.");
       // Confirm Password boxa aynı passwordu tekrar gir
-      // Register butonuna tıkla
+        allPages.vendorRegisterPage().passwordBox.sendKeys("As1.As1.");
+
       // Register butonuna tıklayarak vendor olarak kaydın tamamlandığını doğrula
+        ReusableMethods.click(allPages.vendorRegisterPage().registerButton);
     }
     @Test
     public void tc27() {
        // Email boxa kayıtlı veri gir
+        allPages.vendorRegisterPage().emailBox.sendKeys("ziyang.adithya@floodouts.com");
+
        // Verification Code boxa geçerli bir code gir
+        allPages.vendorRegisterPage().verificationCodeBox.sendKeys("12345");
+
        // Password boxa geçerli bir veri gir
+        allPages.vendorRegisterPage().passwordBox.sendKeys("As1.As1.");
        // Confirm Password boxa aynı passwordu tekrar gir
+        allPages.vendorRegisterPage().passwordBox.sendKeys("As1.As1.");
        // Register butonuna tıkla
+        ReusableMethods.click(allPages.vendorRegisterPage().registerButton);
        // "This Email already exists. Please login to the site and apply as vendor." mesajının alındığını doğrula
     }
 

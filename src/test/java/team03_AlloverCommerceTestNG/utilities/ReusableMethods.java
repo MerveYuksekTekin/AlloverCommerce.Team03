@@ -256,5 +256,20 @@ public class ReusableMethods {
         }
     }
 
+    public static void vendorRegisterEmail(){
+        Driver.getDriver().switchTo().newWindow(WindowType.TAB);
+        Driver.getDriver().get("https://www.fakemail.net/");
+        String email=Driver.getDriver().findElement(By.id("email")).getText();
+        ReusableMethods.switchToWindow(0);
+        allPages.vendorRegisterPage().emailBox.sendKeys(email);
+    }
+    public static void vendorRegisterCode(){
+        ReusableMethods.switchToWindow(1);
+        Driver.getDriver().findElement(By.xpath("(//tr[@data-href='2'])[1]")).click();
+        Driver.getDriver().switchTo().frame("iframeMail");
+        String code=Driver.getDriver().findElement(By.tagName("b")).getText();
+        ReusableMethods.switchToWindow(0);
+        allPages.vendorRegisterPage().verificationCodeBox.sendKeys(code);
+    }
 
 }
