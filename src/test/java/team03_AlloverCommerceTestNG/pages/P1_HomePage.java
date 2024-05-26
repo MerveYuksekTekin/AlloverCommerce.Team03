@@ -14,7 +14,8 @@ public class P1_HomePage {
     @FindBy(xpath = "//*[.='Sign In']")
     public WebElement signInButton;
 
-
+    @FindBy(xpath = "//div[.='Sign Out']")
+    public WebElement signOutButton;
 
     @FindBy(partialLinkText = "My Account")
     public WebElement myAccountButton;
