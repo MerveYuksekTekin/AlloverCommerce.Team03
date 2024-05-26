@@ -1,6 +1,5 @@
 package team03_AlloverCommerceTestNG.tests;
 
-import io.opentelemetry.sdk.trace.ReadableSpan;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -29,7 +28,7 @@ public class US16_AddSimpleProduct {
     public void setUp() {
         // Web sitesine git
         WebDriver driver = Driver.getDriver();
-        driver.get(ConfigReader.getProperty("alloverCommerceUrl"));;
+        driver.get(ConfigReader.getProperty("alloverCommerceUrl"));
 
         // Kayitli vendor bilgileriyle giris yap
         allPages.homePage().signInButton.click();
@@ -175,7 +174,7 @@ public class US16_AddSimpleProduct {
       //  Product kisminda urunun adini gorerek eklendigini onayla
         List<WebElement> products = allPages.vendorProductManagerPage().addedProducts;
         for (WebElement product: products) {
-            Assert.assertNotNull(product.getText().equals("Techpro QA Education "+randomNumber));
+            Assert.assertEquals("Techpro QA Education " + randomNumber, product.getText());
 
         }
 
