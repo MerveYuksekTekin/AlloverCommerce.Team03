@@ -36,7 +36,7 @@ public class US16_AddSimpleProduct {
         ReusableMethods.userVendorlogin("bert.emit@floodouts.com", "wrgyx9K?");
 
         // Sign out a tiklayarak My account sayfasina gir
-        allPages.homePage().signOutButton.click();
+//        allPages.homePage().signOutButton.click();
         //Sol taraftaki listeden Store Manager i tikla
         allPages.myAccountPage().storeManagerButton.click();
         // My Store kisminda Products i tikla
@@ -150,7 +150,7 @@ public class US16_AddSimpleProduct {
         ReusableMethods.waitForSecond(2);
         allPages.vendorProductManagerPage().menuLibraryButton.click();
         ReusableMethods.waitForSecond(4);
-        ReusableMethods.clickByJS(allPages.vendorProductManagerPage().logoImage);
+        ReusableMethods.click(allPages.vendorProductManagerPage().logoImage);
         allPages.vendorProductManagerPage().selectButton.click();
 
        // Galeri image ekle
@@ -158,7 +158,7 @@ public class US16_AddSimpleProduct {
         ReusableMethods.waitForSecond(2);
         allPages.vendorProductManagerPage().menuGalleryLibraryButton.click();
         ReusableMethods.waitForSecond(4);
-        ReusableMethods.clickByJS(allPages.vendorProductManagerPage().logoGalleryImage.get(allPages.vendorProductManagerPage().logoGalleryImage.size()-1));
+        ReusableMethods.click(allPages.vendorProductManagerPage().logoGalleryImage.get(allPages.vendorProductManagerPage().logoGalleryImage.size()-1));
         ReusableMethods.waitForSecond(2);
         allPages.vendorProductManagerPage().addToGalleryPhotoButton.click();
 
