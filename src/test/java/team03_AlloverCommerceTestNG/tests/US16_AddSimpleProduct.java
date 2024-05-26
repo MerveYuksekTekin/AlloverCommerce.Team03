@@ -1,10 +1,9 @@
 package team03_AlloverCommerceTestNG.tests;
 
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -27,8 +26,7 @@ public class US16_AddSimpleProduct {
     @BeforeMethod
     public void setUp() {
         // Web sitesine git
-        WebDriver driver = Driver.getDriver();
-        driver.get(ConfigReader.getProperty("alloverCommerceUrl"));
+        Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
 
         // Kayitli vendor bilgileriyle giris yap
         allPages.homePage().signInButton.click();
@@ -87,7 +85,6 @@ public class US16_AddSimpleProduct {
         //Sale Price bilgisini gir
         allPages.vendorProductManagerPage().salePriceBox.sendKeys("80");
 
-        allPages.vendorProductManagerPage().salePriceBox.clear();
         //Price ve Sale Price bilgilerini girebildigini onayla
         String actualPrice= allPages.vendorProductManagerPage().priceBox.getText();// bos geliyo
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
@@ -227,6 +224,6 @@ public class US16_AddSimpleProduct {
     }
     @AfterMethod
     public void tearDown() {
-    //    Driver.getDriver().close();
+          ReusableMethods.userVendorLogout();
     }
 }

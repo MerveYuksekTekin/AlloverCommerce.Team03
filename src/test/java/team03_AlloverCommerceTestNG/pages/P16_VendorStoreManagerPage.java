@@ -10,6 +10,9 @@ public class P16_VendorStoreManagerPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-       @FindBy(xpath = "(//span[@class ='text'])[4]")
-       public WebElement productsMenu;
+    @FindBy(xpath = "(//span[@class='text'])[4]")
+    public WebElement productsMenu;
+
+    @FindBy(xpath = "//h2[.='Store Manager']")
+    public WebElement storeManagerTitle;
 }
