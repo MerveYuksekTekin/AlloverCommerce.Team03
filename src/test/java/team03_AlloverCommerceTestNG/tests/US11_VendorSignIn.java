@@ -1,6 +1,7 @@
 package team03_AlloverCommerceTestNG.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import team03_AlloverCommerceTestNG.pages.Pages;
 import team03_AlloverCommerceTestNG.utilities.ConfigReader;
@@ -11,14 +12,20 @@ import team03_AlloverCommerceTestNG.utilities.ReusableMethods;
 public class US11_VendorSignIn {
     Pages allPages = new Pages();
 
-    @Test
-    public void tc01() {
+    @BeforeMethod
+    public void setUp() {
         // Siteye ulaşılmalı
         Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
 
         // SIGN IN tıklanır olmalı ve SIGN IN penceresi açılmalı
         Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
         allPages.homePage().signInButton.click();
+
+
+    }
+
+    @Test
+    public void tc01() {
 
         // Kayıtlı bir email adresi girilmeli
         allPages.userVendorLoginPage().emailBox.sendKeys("ziyang.adithya@floodouts.com");
@@ -38,13 +45,6 @@ public class US11_VendorSignIn {
     @Test
     public void tc02() {
 
-        // Siteye ulaşılmalı
-        Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
-
-        // SIGN IN tıklanır olmalı ve SIGN IN penceresi açılmalı
-        Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
-        allPages.homePage().signInButton.click();
-
         // Email box boş bırakılmalı
         allPages.userVendorLoginPage().emailBox.sendKeys("");
 
@@ -58,16 +58,10 @@ public class US11_VendorSignIn {
 
 
     }
+
     @Test
     public void tc03() {
 
-        // Siteye ulaşılmalı
-        Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
-
-        // SIGN IN tıklanır olmalı ve SIGN IN penceresi açılmalı
-        Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
-        allPages.homePage().signInButton.click();
-
         // Email boxa geçersiz bir email gir
         allPages.userVendorLoginPage().emailBox.sendKeys("merve@floodouts.com");
 
@@ -81,16 +75,10 @@ public class US11_VendorSignIn {
         Assert.assertTrue(allPages.userVendorLoginPage().warningMessage.isDisplayed());
 
     }
+
     @Test
     public void tc04() {
 
-        // Siteye ulaşılmalı
-        Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
-
-        // SIGN IN tıklanır olmalı ve SIGN IN penceresi açılmalı
-        Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
-        allPages.homePage().signInButton.click();
-
         // Email boxa geçersiz bir email gir
         allPages.userVendorLoginPage().emailBox.sendKeys("merve@floodouts.com");
 
@@ -104,15 +92,9 @@ public class US11_VendorSignIn {
         Assert.assertTrue(allPages.userVendorLoginPage().warningMessage.isDisplayed());
 
     }
+
     @Test
     public void tc05() {
-
-        // Siteye ulaşılmalı
-        Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
-
-        // SIGN IN tıklanır olmalı ve SIGN IN penceresi açılmalı
-        Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
-        allPages.homePage().signInButton.click();
 
         // Email boxa kayıtlı bir email gir
         allPages.userVendorLoginPage().emailBox.sendKeys("ziyang.adithya@floodouts.com");
@@ -127,15 +109,9 @@ public class US11_VendorSignIn {
         Assert.assertTrue(allPages.userVendorLoginPage().warningMessage.isDisplayed());
 
     }
+
     @Test
     public void tc06() {
-
-        // Siteye ulaşılmalı
-        Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
-
-        // SIGN IN tıklanır olmalı ve SIGN IN penceresi açılmalı
-        Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
-        allPages.homePage().signInButton.click();
 
         // Email box boş bırakılmalı
         allPages.userVendorLoginPage().emailBox.sendKeys("");
@@ -149,15 +125,9 @@ public class US11_VendorSignIn {
         // Giriş işlemi gerçekleşmemeli
 
     }
+
     @Test
     public void tc07() {
-
-        // Siteye ulaşılmalı
-        Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
-
-        // SIGN IN tıklanır olmalı ve SIGN IN penceresi açılmalı
-        Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
-        allPages.homePage().signInButton.click();
 
         // Email boxa kayıtlı email gir
         allPages.userVendorLoginPage().emailBox.sendKeys("ziyang.adithya@floodouts.com");
@@ -178,15 +148,9 @@ public class US11_VendorSignIn {
         Assert.assertTrue(allPages.vendorStoreManagerPage().storeManagerTitle.isDisplayed());
 
     }
+
     @Test
     public void tc08() {
-
-        // Siteye ulaşılmalı
-        Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
-
-        // SIGN IN tıklanır olmalı ve SIGN IN penceresi açılmalı
-        Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
-        allPages.homePage().signInButton.click();
 
         // Email boxa kayıtlı email gir
         allPages.userVendorLoginPage().emailBox.sendKeys("ziyang.adithya@floodouts.com");
@@ -207,15 +171,9 @@ public class US11_VendorSignIn {
         Assert.assertTrue(allPages.myAccountPage().ordersButtonTitle.isDisplayed());
 
     }
+
     @Test
     public void tc09() {
-
-        // Siteye ulaşılmalı
-        Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
-
-        // SIGN IN tıklanır olmalı ve SIGN IN penceresi açılmalı
-        Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
-        allPages.homePage().signInButton.click();
 
         // Email boxa kayıtlı email gir
         allPages.userVendorLoginPage().emailBox.sendKeys("ziyang.adithya@floodouts.com");
@@ -236,15 +194,9 @@ public class US11_VendorSignIn {
         Assert.assertTrue(allPages.myAccountPage().dowloadsButtonTitle.isDisplayed());
 
     }
+
     @Test
     public void tc10() {
-
-        // Siteye ulaşılmalı
-        Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
-
-        // SIGN IN tıklanır olmalı ve SIGN IN penceresi açılmalı
-        Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
-        allPages.homePage().signInButton.click();
 
         // Email boxa kayıtlı email gir
         allPages.userVendorLoginPage().emailBox.sendKeys("ziyang.adithya@floodouts.com");
@@ -265,15 +217,9 @@ public class US11_VendorSignIn {
         Assert.assertTrue(allPages.vendorAddressesPage().addressesTitle.isDisplayed());
 
     }
+
     @Test
     public void tc11() {
-
-        // Siteye ulaşılmalı
-        Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
-
-        // SIGN IN tıklanır olmalı ve SIGN IN penceresi açılmalı
-        Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
-        allPages.homePage().signInButton.click();
 
         // Email boxa kayıtlı email gir
         allPages.userVendorLoginPage().emailBox.sendKeys("ziyang.adithya@floodouts.com");
@@ -294,15 +240,9 @@ public class US11_VendorSignIn {
         Assert.assertTrue(allPages.myAccountPage().accountDetailsButton.isDisplayed());
 
     }
+
     @Test
     public void tc12() {
-
-        // Siteye ulaşılmalı
-        Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
-
-        // SIGN IN tıklanır olmalı ve SIGN IN penceresi açılmalı
-        Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
-        allPages.homePage().signInButton.click();
 
         // Email boxa kayıtlı email gir
         allPages.userVendorLoginPage().emailBox.sendKeys("ziyang.adithya@floodouts.com");
@@ -323,15 +263,9 @@ public class US11_VendorSignIn {
         Assert.assertTrue(allPages.wishlistPage().wishlistTitle.isDisplayed());
 
     }
+
     @Test
     public void tc13() {
-
-        // Siteye ulaşılmalı
-        Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
-
-        // SIGN IN tıklanır olmalı ve SIGN IN penceresi açılmalı
-        Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
-        allPages.homePage().signInButton.click();
 
         // Email boxa kayıtlı email gir
         allPages.userVendorLoginPage().emailBox.sendKeys("ziyang.adithya@floodouts.com");
@@ -352,15 +286,9 @@ public class US11_VendorSignIn {
         Assert.assertTrue(allPages.myAccountPage().supportTicketsButtonTicketsText.isDisplayed());
 
     }
+
     @Test
     public void tc14() {
-
-        // Siteye ulaşılmalı
-        Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
-
-        // SIGN IN tıklanır olmalı ve SIGN IN penceresi açılmalı
-        Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
-        allPages.homePage().signInButton.click();
 
         // Email boxa kayıtlı email gir
         allPages.userVendorLoginPage().emailBox.sendKeys("ziyang.adithya@floodouts.com");
@@ -381,17 +309,10 @@ public class US11_VendorSignIn {
         Assert.assertTrue(allPages.myAccountPage().followingButtonActionText.isDisplayed());
 
 
-
     }
+
     @Test
     public void tc15() {
-
-        // Siteye ulaşılmalı
-        Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
-
-        // SIGN IN tıklanır olmalı ve SIGN IN penceresi açılmalı
-        Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
-        allPages.homePage().signInButton.click();
 
         // Kayıtlı bir email adresi girilmeli
         allPages.userVendorLoginPage().emailBox.sendKeys("ziyang.adithya@floodouts.com");
