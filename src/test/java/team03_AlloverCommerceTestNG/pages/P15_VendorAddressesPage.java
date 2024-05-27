@@ -56,9 +56,6 @@ public class P15_VendorAddressesPage {
     public WebElement cityErrorMessage;
 
 
-
-
-
     public void selectCountry(String countryName) {
         Select select = new Select(countryDropdown);
         select.selectByVisibleText(countryName);
@@ -69,6 +66,10 @@ public class P15_VendorAddressesPage {
         Select select = new Select(stateDropdown);
         select.selectByVisibleText(stateName);
     }
+
+    @FindBy(xpath = "//h4[.='Addresses']")
+    public WebElement addressesTitle;
+}
 
 
 

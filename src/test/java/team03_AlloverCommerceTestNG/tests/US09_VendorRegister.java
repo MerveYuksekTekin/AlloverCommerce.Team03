@@ -1,9 +1,5 @@
 package team03_AlloverCommerceTestNG.tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.WindowType;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -12,7 +8,7 @@ import team03_AlloverCommerceTestNG.utilities.ConfigReader;
 import team03_AlloverCommerceTestNG.utilities.Driver;
 import team03_AlloverCommerceTestNG.utilities.ReusableMethods;
 
-public class US09 {
+public class US09_VendorRegister {
 
     Pages allPages=new Pages();
 
@@ -426,7 +422,7 @@ public class US09 {
        // Password boxa geçerli bir veri gir
         allPages.vendorRegisterPage().passwordBox.sendKeys("As1.As1.");
        // Confirm Password boxa farklı veri gir
-        allPages.vendorRegisterPage().passwordBox.sendKeys("As1.As1.");
+        allPages.vendorRegisterPage().passwordBox.sendKeys("As1.As");
         // Register butonuna tıkla
         ReusableMethods.click(allPages.vendorRegisterPage().registerButton);
        // Confim Password box'a geçersiz veri girildiğinde kayıt işleminin gerçekleşmediğini doğrula
@@ -455,10 +451,13 @@ public class US09 {
 
        // Password boxa geçerli bir veri gir
         allPages.vendorRegisterPage().passwordBox.sendKeys("As1.As1.");
+
        // Confirm Password boxa aynı passwordu tekrar gir
         allPages.vendorRegisterPage().passwordBox.sendKeys("As1.As1.");
+
        // Register butonuna tıkla
         ReusableMethods.click(allPages.vendorRegisterPage().registerButton);
+
        // "This Email already exists. Please login to the site and apply as vendor." mesajının alındığını doğrula
     }
 

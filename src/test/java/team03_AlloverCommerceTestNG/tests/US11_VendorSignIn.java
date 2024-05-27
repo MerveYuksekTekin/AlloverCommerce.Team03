@@ -113,8 +113,8 @@ public class US11_VendorSignIn {
     @Test
     public void tc06() {
 
-        // Email box boş bırakılmalı
-        allPages.userVendorLoginPage().emailBox.sendKeys("");
+        // Email boxa kayıtlı email gir
+        allPages.userVendorLoginPage().emailBox.sendKeys("ziyang.adithya@floodouts.com");
 
         // Kayıtlı password girilmeli
         allPages.userVendorLoginPage().passwordBox.sendKeys("aaaaaaaaaa11");
@@ -122,7 +122,10 @@ public class US11_VendorSignIn {
         // Sign In butonu tıklanır olmalı
         allPages.userVendorLoginPage().signInButton.click();
 
-        // Giriş işlemi gerçekleşmemeli
+        //My Account linkine tıkla
+        ReusableMethods.click(allPages.homePage().myAccountButton);
+
+        //Dashboard altında  Store manager, orders, downloads, addresses , account details, wishlist, Support tickets, followings ve log out seçeneklerinin görüldüğünü doğrula
 
     }
 
