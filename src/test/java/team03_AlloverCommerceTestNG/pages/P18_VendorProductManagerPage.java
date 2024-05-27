@@ -33,9 +33,6 @@ public class P18_VendorProductManagerPage {
     public WebElement categoryEducation;
 
     @FindBy(id = "featured_img_display")
-    public WebElement uploadPhoto;
-
-    @FindBy(id = "featured_img_display")
     public WebElement addPhotoButton;
 
 
@@ -66,5 +63,39 @@ public class P18_VendorProductManagerPage {
 
     @FindBy(className= "wcfm_product_title" )
     public List<WebElement> addedProducts;
+
+    @FindBy(xpath = "//*[.='Inventory']")
+    public WebElement menuInventory;
+     @FindBy(xpath = "//*[.='Shipping']")
+    public WebElement menuShipping;
+     @FindBy(xpath = "//div[.='Attributes']")
+    public WebElement menuAttributes;
+     @FindBy(xpath = "//div[.='Linked']")
+    public WebElement menuLinked;
+
+    @FindBy(id ="wcfm_products_manage_form_yoast_head")
+      public WebElement menuSEO;
+
+    @FindBy(xpath = "//div[.='Advanced']")
+      public WebElement menuAdvanced;
+
+      @FindBy(id = "sku")
+      public WebElement boxSku;
+
+      @FindBy(id = "manage_stock")
+      public WebElement boxManageStock;
+
+      @FindBy(id = "stock_qty")
+      public WebElement boxStockQty;
+
+      @FindBy(id = "backorders")
+      public WebElement boxAllowBackorders;
+
+      @FindBy(id = "sold_individually")
+      public WebElement boxSoldIndividually;
+
+     @FindBy(id = "allPages.vendorProductManagerPage().boxSku.sendKeys(")
+      public WebElement boxStockStatus;
+
 
 }
