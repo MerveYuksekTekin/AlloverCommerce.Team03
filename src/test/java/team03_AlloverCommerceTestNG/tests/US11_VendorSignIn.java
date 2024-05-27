@@ -1,6 +1,7 @@
 package team03_AlloverCommerceTestNG.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import team03_AlloverCommerceTestNG.pages.Pages;
@@ -55,6 +56,9 @@ public class US11_VendorSignIn {
         allPages.userVendorLoginPage().signInButton.click();
 
         // Giriş işlemi gerçekleşmemeli
+        String validationMessage = allPages.userVendorLoginPage().emailBox.getAttribute("validationMessage");
+        Assert.assertEquals(validationMessage, "Lütfen bu alanı doldurun.");
+
 
 
     }
@@ -332,6 +336,11 @@ public class US11_VendorSignIn {
         //Dashboard altında Log out  menüsüne girildiğini doğrula
         ReusableMethods.click(allPages.myAccountPage().logoutButton);
         Assert.assertTrue(allPages.homePage().signInButton.isDisplayed());
+
+    }
+
+    @AfterMethod
+    public void tearDown() {
 
     }
 }
