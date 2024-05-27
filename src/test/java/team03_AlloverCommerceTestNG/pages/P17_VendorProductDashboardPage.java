@@ -7,6 +7,7 @@ import team03_AlloverCommerceTestNG.utilities.Driver;
 
 public class P17_VendorProductDashboardPage {
 
+
     public P17_VendorProductDashboardPage() {
         PageFactory.initElements(Driver.getDriver(), this);
 
@@ -51,6 +52,12 @@ public class P17_VendorProductDashboardPage {
     public WebElement phone;
     @FindBy(xpath = "//input[@value='nike.crew@floodouts.com']")
     public WebElement email;
+
+
+
+    @FindBy(xpath = "//*[.='Add New']")
+    public WebElement addNewButton;
+
 
 
 

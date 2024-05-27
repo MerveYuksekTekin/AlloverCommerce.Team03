@@ -7,6 +7,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.DataProvider;
 import team03_AlloverCommerceTestNG.pages.Pages;
 
 import java.awt.*;
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReusableMethods {
+
     static Pages allPages = new Pages();
     public static void userVendorlogin(String email, String password) {
         allPages.userVendorLoginPage().emailBox.sendKeys(email);
@@ -196,6 +198,7 @@ public class ReusableMethods {
         System.out.println("Attribute Value: = " + attribute_Value);
     }
 
+
     //File Upload Robot Class
     public void uploadFilePath(String dosyaYolu) {
         try {
@@ -252,5 +255,6 @@ public class ReusableMethods {
             throw new RuntimeException(e);
         }
     }
+
 
 }
