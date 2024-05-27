@@ -13,6 +13,8 @@ public class P15_VendorAddressesPage {
     public P15_VendorAddressesPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
+    @FindBy(xpath = "//h4[.='Adressses']")
+    public WebElement addressesTitle;
 
     @FindBy(xpath = "//a[contains(@href, 'shipping') and contains(text(), 'Add')]")
     public WebElement addButton;
@@ -56,9 +58,6 @@ public class P15_VendorAddressesPage {
     public WebElement cityErrorMessage;
 
 
-
-
-
     public void selectCountry(String countryName) {
         Select select = new Select(countryDropdown);
         select.selectByVisibleText(countryName);
@@ -70,7 +69,11 @@ public class P15_VendorAddressesPage {
         select.selectByVisibleText(stateName);
     }
 
+    @FindBy(linkText = "Addresses")
+    public WebElement addressesButton;
 
+
+}
 
 
     
