@@ -25,4 +25,13 @@ public class P18_VendorProductManagerPage {
     public  WebElement discountType;
     @FindBy(xpath = "//*[@id='coupon_amount']")
     public  WebElement couponAmountBox;
+    @FindBy(css = "input[id='expiry_date']")
+    public WebElement couponsExpiryDate;
+    @FindBy(xpath = "(//input[@type='checkbox'])[1]")
+    public WebElement AllowFreeShippingCheckbox;
+    @FindBy(xpath = "(//input[@type='checkbox'])[2]")
+    public WebElement ShowOnStoreCheckbox;
+    @FindBy(xpath = "(//input[@type='submit'])[1]")
+    public WebElement couponsSubmitButton;
+
 }
