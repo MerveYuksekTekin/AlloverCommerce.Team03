@@ -23,4 +23,11 @@ public class P14_VendorRegisterPage {
 
     @FindBy(id = "password_strength")
     public WebElement passwordWrongMessage;
+
+    @FindBy(xpath = "(//h1)[2]")
+    public WebElement welcomeToAllevorCommerce;
+    @FindBy(css = "(//div[contains(text(),'Email: This field is required.')])[1]")
+    public WebElement emailWrongText;
+    @FindBy(xpath = "//*[contains(text(), 'This Email already exists. Please login to the site and apply as vendor.')]")
+    public WebElement sameEmailWrongText;
 }
