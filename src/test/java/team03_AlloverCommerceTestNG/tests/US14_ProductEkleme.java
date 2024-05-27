@@ -1,5 +1,7 @@
 package team03_AlloverCommerceTestNG.tests;
 
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -8,8 +10,11 @@ import team03_AlloverCommerceTestNG.utilities.ConfigReader;
 import team03_AlloverCommerceTestNG.utilities.Driver;
 import team03_AlloverCommerceTestNG.utilities.ReusableMethods;
 
+import java.time.Instant;
+
 public class US14_ProductEkleme {
     Pages allPages = new Pages();
+     ReusableMethods resuable = new ReusableMethods();
 
 
     @BeforeMethod
@@ -53,6 +58,9 @@ public class US14_ProductEkleme {
         Assert.assertTrue(allPages.vendorProductManagerPage().dropdownGroupedProduct.isDisplayed());
     }
 
+
+
+
     @Test
     public void test04() {
         //Acilan sayfada Simple Product tikla
@@ -64,7 +72,37 @@ public class US14_ProductEkleme {
 
     @Test
     public void test05() {
+        //Ürün Fotografı Eklemek için Sağ Tarafta ki Resim Ekleme Çerçevesine Tıkla
+       allPages.vendorProductManagerPage().uploadPhoto.click();
+        //Resim Eklemek için SELECT FILES'a Tıkla
+        allPages.vendorProductManagerPage().selectFiles.click();
+        //Acilan pencereden masaustune tikla
+
+        String filePath = "C:User\\Gebruiker\\oneDrive\\Masaustu\\logo_360.png";
+        resuable.uploadFilePath(filePath);
+
+
+        allPages.vendorProductManagerPage().selectButton.click();
+        //Eklemek istedigi resmin ustune tiklar
+
+        //Eklemek istediği Resmi Seçip Aç Button'nuna Tıkla
+        //Eklediği Resmin Üstüne Tıkla ve Sağ Alt Tarafta ki SELECT Botton'una Tıkla
+        //Eklenen Resmin Eklendiğini Doğrula
+    }
+
+    @Test
+    public void test07() {
+        //Product Title'a bir veri gir
+        allPages.vendorProductManagerPage().productTitle.sendKeys("Ali");
+        //Short Description'a bir veri gir
         
+
+
+
+       // Description'a bir veri gir
+
+       // Product Title, Short Description ve Descriptiona yazi yazılabildigini dogrula
+
     }
 }
 

@@ -48,8 +48,38 @@ public class P18_VendorProductManagerPage {
     @FindBy(id = "featured_img_display")
     public WebElement uploadPhoto;
 
+
+    @FindBy(xpath = "//option[@value='external']")
+    public WebElement dropdownExternalProduct;
+
+    @FindBy(xpath = "//option[@value='grouped']")
+    public WebElement dropdownGroupedProduct;
+
+    @FindBy(xpath = "//option[@value='variable']")
+    public WebElement dropdownVariableProduct;
+
+    @FindBy(id ="__wp-uploader-id-1")
+    public WebElement selectFiles;
+
+    @FindBy(xpath = "//button[text()='Select']")
+    public WebElement selectButton;
+
+    @FindBy(xpath = "//div[@class='media-frame-content']//li[contains(@class, 'attachment')]//img")
+    public WebElement addedImage;
+
+    @FindBy (id= "pro_title")
+    public WebElement productTitle;
+
+
+    public  WebElement shortDescription;
+
+
+
+
+
     @FindBy(id = "featured_img_display")
     public WebElement addPhotoButton;
+
 
 
     @FindBy(xpath = "(//*[@id='menu-item-browse'])[1]")
