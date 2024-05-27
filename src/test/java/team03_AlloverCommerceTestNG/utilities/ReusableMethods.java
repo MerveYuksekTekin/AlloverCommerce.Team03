@@ -271,5 +271,21 @@ public class ReusableMethods {
         ReusableMethods.switchToWindow(0);
         allPages.vendorRegisterPage().verificationCodeBox.sendKeys(code);
     }
+    public static String emailAndCodeMessage(){
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) Driver.getDriver();
+        String dynamicText = (String) jsExecutor.executeScript(
+                "return document.querySelector('.wcfm-message.email_verification_message').textContent;"
+        );
+        return dynamicText;
+    }
+
+    public static String passwordWrongMessage(){
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) Driver.getDriver();
+        String dynamicText = (String) jsExecutor.executeScript(
+                "return document.querySelector('.wcfm-message.wcfm-error').textContent;");
+        return dynamicText;
+    }
+
+
 
 }
