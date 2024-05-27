@@ -459,6 +459,7 @@ public class US09_VendorRegister {
         ReusableMethods.click(allPages.vendorRegisterPage().registerButton);
 
        // "This Email already exists. Please login to the site and apply as vendor." mesajının alındığını doğrula
+        Assert.assertTrue(allPages.vendorRegisterPage().sameEmailWrongText.isDisplayed());
     }
 
 

@@ -88,8 +88,7 @@ public class P18_VendorProductManagerPage {
     @FindBy(xpath = "//img[@src='https://allovercommerce.com/wp-content/uploads/2024/05/logo-1-300x237.png']")
     public WebElement logoImage;
 
-    @FindBy(xpath = "//button[.='Select']")
-    public WebElement selectButton;
+
 
     @FindBy(id = "gallery_img_gimage_0_display")
     public WebElement addGalleryPhotoButton;
