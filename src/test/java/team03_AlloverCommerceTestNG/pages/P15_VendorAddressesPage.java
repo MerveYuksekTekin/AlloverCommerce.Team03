@@ -69,6 +69,7 @@ public class P15_VendorAddressesPage {
         select.selectByVisibleText(stateName);
     }
 
+
     @FindBy(linkText = "Addresses")
     public WebElement addressesButton;
 

@@ -1,12 +1,10 @@
 package team03_AlloverCommerceTestNG.tests;
 
-import jdk.jfr.Description;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
+
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -16,9 +14,11 @@ import org.testng.annotations.Test;
 
 import team03_AlloverCommerceTestNG.pages.Pages;
 import team03_AlloverCommerceTestNG.utilities.ConfigReader;
-import team03_AlloverCommerceTestNG.utilities.DataProviderUtils;
 import team03_AlloverCommerceTestNG.utilities.Driver;
 import team03_AlloverCommerceTestNG.utilities.ReusableMethods;
+
+import java.util.List;
+import java.util.Random;
 
 public class US16_AddSimpleProduct {
 
@@ -28,7 +28,7 @@ public class US16_AddSimpleProduct {
     public void setUp() {
         // Web sitesine git
         WebDriver driver = Driver.getDriver();
-        driver.get(ConfigReader.getProperty("alloverCommerceUrl"));;
+        driver.get(ConfigReader.getProperty("alloverCommerceUrl"));
 
         // Kayitli vendor bilgileriyle giris yap
         allPages.homePage().signInButton.click();
@@ -126,32 +126,58 @@ public class US16_AddSimpleProduct {
     public void test06() {
        // Dropdown dan Simple Product sec
         ReusableMethods.ddmVisibleText(allPages.vendorProductManagerPage().dropdownSimpleProduct, "Simple Product");
-       // Virtual ve Downloadable i sec
-        ReusableMethods.waitForSecond(2);
-        ReusableMethods.scroll(allPages.vendorProductManagerPage().downloadableCheckBox);
-        allPages.vendorProductManagerPage().virtualCheckBox.click();
-        allPages.vendorProductManagerPage().downloadableCheckBox.click();
+       // Virtual i sec
 
+        ReusableMethods.scroll(allPages.vendorProductManagerPage().virtualCheckBox);
+        ReusableMethods.waitForSecond(2);
+        allPages.vendorProductManagerPage().virtualCheckBox.click();
 
         //Product Title gir
-        allPages.vendorProductManagerPage().productTitleBox.sendKeys("Techpro QA Education");
+        Random random = new Random();
+        int randomNumber = 100 + random.nextInt(900);
+        allPages.vendorProductManagerPage().productTitleBox.sendKeys("Techpro QA Education "+randomNumber);
         //Price ve Sale Price bilgilerini gir
         allPages.vendorProductManagerPage().priceBox.sendKeys("4000");
         allPages.vendorProductManagerPage().salePriceBox.sendKeys("3000");
-
         //Kategori sec
         Actions actions = new Actions(Driver.getDriver());
         actions.scrollToElement(allPages.vendorProductManagerPage().categoryEducation).perform();
         allPages.vendorProductManagerPage().categoryEducation.click();
-        //Resim ekle
-        allPages.vendorProductManagerPage().uploadPhoto.click();
+
+       //Resim ekle
+        allPages.vendorProductManagerPage().addPhotoButton.click();
+        ReusableMethods.waitForSecond(2);
+        allPages.vendorProductManagerPage().menuLibraryButton.click();
+        ReusableMethods.waitForSecond(4);
+        ReusableMethods.click(allPages.vendorProductManagerPage().logoImage);
+        allPages.vendorProductManagerPage().selectButton.click();
 
        // Galeri image ekle
-       // Downloadable menusunde name kismini gir
-        //Downloadable menusunde file kismina dokumani upload et
+        allPages.vendorProductManagerPage().addGalleryPhotoButton.click();
+        ReusableMethods.waitForSecond(2);
+        allPages.vendorProductManagerPage().menuGalleryLibraryButton.click();
+        ReusableMethods.waitForSecond(4);
+        ReusableMethods.click(allPages.vendorProductManagerPage().logoGalleryImage.get(allPages.vendorProductManagerPage().logoGalleryImage.size()-1));
+        ReusableMethods.waitForSecond(2);
+        allPages.vendorProductManagerPage().addToGalleryPhotoButton.click();
+
         //Submit butonuna bas
+        ReusableMethods.scroll( allPages.vendorProductManagerPage().submitButton);
+        ReusableMethods.waitForSecond(2);
+        allPages.vendorProductManagerPage().submitButton.click();
+
        // Soldaki menulerden Product i tikla
+        ReusableMethods.waitForSecond(4);
+        ReusableMethods.scroll( allPages.vendorProductManagerPage().menuProduct);
+        allPages.vendorProductManagerPage().menuProduct.click();
+
       //  Product kisminda urunun adini gorerek eklendigini onayla
+        List<WebElement> products = allPages.vendorProductManagerPage().addedProducts;
+        for (WebElement product: products) {
+            Assert.assertEquals("Techpro QA Education " + randomNumber, product.getText());
+
+        }
+
     }
 
 
