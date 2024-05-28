@@ -576,7 +576,7 @@ Assert.assertEquals(ReusableMethods.emailAndCodeMessage(),"Email: This field is 
     @AfterMethod
     public void tearDown() {
 
-        Driver.getDriver().findElement(By.linkText("Not right now")).click();
-        ReusableMethods.logOut();
+      //  Driver.getDriver().findElement(By.linkText("Not right now")).click();
+      //  ReusableMethods.logOut();
     }
 }

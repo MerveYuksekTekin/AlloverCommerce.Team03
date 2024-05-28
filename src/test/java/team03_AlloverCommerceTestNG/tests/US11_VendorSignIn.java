@@ -338,6 +338,33 @@ public class US11_VendorSignIn {
         Assert.assertTrue(allPages.homePage().signInButton.isDisplayed());
 
     }
+    @Test
+    public void tc16() {
+
+        // Kayıtlı bir email adresi girilmeli
+        allPages.userVendorLoginPage().emailBox.sendKeys("ziyang.adithya@floodouts.com");
+
+        // Password boxa basina yeya sonuna space koyarak kayitli olan passwordu gir
+        allPages.userVendorLoginPage().passwordBox.sendKeys(" aaaaaaaaaa11");
+
+        // Sign In butonu tıklanır olmalı
+        allPages.userVendorLoginPage().signInButton.click();
+
+        //My Account linkine tıkla
+        ReusableMethods.click(allPages.homePage().myAccountButton);
+
+        //Giriş yapılmadığını doğrula
+        ReusableMethods.click(allPages.myAccountPage().logoutButton);
+        Assert.assertTrue(allPages.homePage().signInButton.isDisplayed());
+
+    }
+
+
+
+
+
+
+
 
     @AfterMethod
     public void tearDown() {
