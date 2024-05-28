@@ -52,9 +52,25 @@ public class P17_VendorProductDashboardPage {
     public WebElement phone;
     @FindBy(xpath = "//input[@value='nike.crew@floodouts.com']")
     public WebElement email;
+    @FindBy(xpath = "(//bdi)[4]")
+    public WebElement subtotal;
+    @FindBy(xpath = "//tr[@class='order-total']")
+    public WebElement totalprice;
+    @FindBy(xpath = "(//input)[22]")
+    public WebElement wireTransfer;
+    @FindBy(id = "payment_method_cod")
+    public WebElement payAtTheDoor;
 
+    @FindBy(xpath = "//*[text()='Thank you. Your order has been received.']")
+    public WebElement Verifymessage;
 
+    @FindBy(xpath = "//button[@id='place_order']")
+    public WebElement placeOrder;
 
+<<<<<<< HEAD
+    @FindBy(xpath = "//a[contains(text(),'My Account')]")
+    public WebElement myAccount;
+=======
     @FindBy(xpath = "//*[.='Add New']")
     public WebElement addNewButton;
 
@@ -62,6 +78,7 @@ public class P17_VendorProductDashboardPage {
 
 
 
+>>>>>>> b79e742484b4fbb2ba17b0bd45aac26419565c66
 
 
 }
