@@ -7,6 +7,7 @@ import team03_AlloverCommerceTestNG.utilities.Driver;
 
 public class P17_VendorProductDashboardPage {
 
+
     public P17_VendorProductDashboardPage() {
         PageFactory.initElements(Driver.getDriver(), this);
 
@@ -66,8 +67,18 @@ public class P17_VendorProductDashboardPage {
     @FindBy(xpath = "//button[@id='place_order']")
     public WebElement placeOrder;
 
+<<<<<<< HEAD
     @FindBy(xpath = "//a[contains(text(),'My Account')]")
     public WebElement myAccount;
+=======
+    @FindBy(xpath = "//*[.='Add New']")
+    public WebElement addNewButton;
+
+
+
+
+
+>>>>>>> b79e742484b4fbb2ba17b0bd45aac26419565c66
 
 
 }

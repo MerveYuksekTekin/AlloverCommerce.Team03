@@ -1,30 +1,35 @@
 package team03_AlloverCommerceTestNG.pages;
 
 import org.openqa.selenium.WebElement;
+
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import team03_AlloverCommerceTestNG.utilities.Driver;
 
 public class P4_MyAccountPage {
 
-    public P4_MyAccountPage() {
-        PageFactory.initElements(Driver.getDriver(),this);
-    }
 
-    @FindBy(partialLinkText = "Store Manager")
+ public P4_MyAccountPage() {
+        PageFactory.initElements(Driver.getDriver(),this);
+
+    }
+  
+     @FindBy(partialLinkText = "Store Manager")
     public WebElement storeManagerButton;
 
+<<<<<<< HEAD
     @FindBy(xpath = "//a[text()='Browse products']")
     public WebElement browseProduct;
+=======
+   @FindBy(linkText = "Addresses")
+    public WebElement addressesButton;
+>>>>>>> b79e742484b4fbb2ba17b0bd45aac26419565c66
 
     @FindBy(linkText = "Orders")
     public WebElement ordersButton;
 
     @FindBy(linkText = "Downloads")
     public WebElement dowloadsButton;
-
-    @FindBy(linkText = "Addresses")
-    public WebElement addressesButton;
 
     @FindBy(linkText = "Account details")
     public WebElement accountDetailsButton;
@@ -54,5 +59,7 @@ public class P4_MyAccountPage {
 
     @FindBy(xpath= "//h4[.='Downloads']")
     public WebElement dowloadsButtonTitle;
+
+
 
 }

@@ -7,6 +7,8 @@ import team03_AlloverCommerceTestNG.utilities.Driver;
 
 public class P1_HomePage {
 
+
+
     public P1_HomePage() {
         PageFactory.initElements(Driver.getDriver(),this);
     }
@@ -22,4 +24,5 @@ public class P1_HomePage {
 
 @FindBy(xpath = "//span[.='Register']")
     public WebElement registerButton;
+
 }
