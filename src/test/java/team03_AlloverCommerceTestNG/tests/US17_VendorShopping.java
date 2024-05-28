@@ -31,8 +31,12 @@ public class US17_VendorShopping {
         //Sign Out tikla
         allPages.homePage().signOutButton.click();
         //ORDERS linkine tikla
-
         allPages.myAccountPage().ordersButton.click();
+
+        //Browse Product tikla
+       // ReusableMethods.click(allPages.myAccountPage().browseProduct);
+
+
         //Search kutusuna tikla
         allPages.vendorProductDashboardPage().searchBox.sendKeys("Kalem", Keys.ENTER);
 

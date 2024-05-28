@@ -55,7 +55,7 @@ public class US18_VendorAddCoupons {
     public void test01() {
         //Code kutucuguna  coupons kodu yazilabildigini dogrula
         ReusableMethods.scroll(allpages.vendorProductManagerPage().codeBox);
-        allpages.vendorProductManagerPage().codeBox.sendKeys(Keys.DELETE,"SPRINGSALE20");
+        allpages.vendorProductManagerPage().codeBox.sendKeys(Keys.DELETE,"SPRINGSALE20");//Her testte kupon adını degistirmelisin; aynı kupon var diyor yoksa
         Assert.assertTrue(allpages.vendorProductManagerPage().codeBox.getAttribute("value")
                 .contains("SPRINGSALE20"));
        ReusableMethods.waitForSecond(2);
