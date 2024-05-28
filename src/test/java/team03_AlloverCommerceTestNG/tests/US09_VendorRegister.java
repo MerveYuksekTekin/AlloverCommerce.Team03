@@ -50,6 +50,8 @@ public class US09_VendorRegister {
 
         // Welcome to Allover Commerce! yazısı göründüğünü doğrula
         Assert.assertEquals(allPages.vendorRegisterPage().welcomeToAllevorCommerce.getText(), "Welcome to Allover Commerce!");
+        Driver.getDriver().findElement(By.cssSelector("a[href=\"https://allovercommerce.com/store-manager/\"]")).click();
+        ReusableMethods.logOut();
 
     }
 
@@ -576,7 +578,6 @@ Assert.assertEquals(ReusableMethods.emailAndCodeMessage(),"Email: This field is 
     @AfterMethod
     public void tearDown() {
 
-      //  Driver.getDriver().findElement(By.linkText("Not right now")).click();
-      //  ReusableMethods.logOut();
+
     }
 }

@@ -268,6 +268,12 @@ public class ReusableMethods {
         Driver.getDriver().findElement(By.xpath("(//tr[@data-href='2'])[1]")).click();
         Driver.getDriver().switchTo().frame("iframeMail");
         String code=Driver.getDriver().findElement(By.tagName("b")).getText();
+        Driver.getDriver().switchTo().defaultContent();
+        waitForSecond(2);
+        Driver.getDriver().findElement(By.cssSelector(".glyphicon.glyphicon-share-alt.zavriOkno.zrcadli")).click();
+        waitForSecond(2);
+        Driver.getDriver().findElement(By.cssSelector("a[href='/delete']")).click();
+        Driver.getDriver().close();
         ReusableMethods.switchToWindow(0);
         allPages.vendorRegisterPage().verificationCodeBox.sendKeys(code);
     }
@@ -287,8 +293,8 @@ public class ReusableMethods {
     }
 
     public static void logOut(){
-        ReusableMethods.scroll(allPages.vendorProductManagerPage().addNewCoupon);
-        allPages.vendorProductManagerPage().addNewCoupon.submit();
+        allPages.homePage().signOutButton.click();
+        allPages.myAccountPage().logoutButton.click();
     }
 
 
