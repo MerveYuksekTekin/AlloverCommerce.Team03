@@ -265,14 +265,14 @@ public class ReusableMethods {
     }
     public static void vendorRegisterCode(){
         ReusableMethods.switchToWindow(1);
-        Driver.getDriver().findElement(By.xpath("(//tr[@data-href='2'])[1]")).click();
+        click(Driver.getDriver().findElement(By.xpath("(//tr[@data-href='2'])[1]")));
+       // Driver.getDriver().findElement(By.xpath("(//tr[@data-href='2'])[1]")).click();
         Driver.getDriver().switchTo().frame("iframeMail");
         String code=Driver.getDriver().findElement(By.tagName("b")).getText();
         Driver.getDriver().switchTo().defaultContent();
+        click(Driver.getDriver().findElement(By.cssSelector("span.glyphicon.glyphicon-share-alt.zavriOkno.zrcadli")));
+        click(Driver.getDriver().findElement(By.cssSelector("a[href='/delete']")));
         waitForSecond(2);
-        Driver.getDriver().findElement(By.cssSelector(".glyphicon.glyphicon-share-alt.zavriOkno.zrcadli")).click();
-        waitForSecond(2);
-        Driver.getDriver().findElement(By.cssSelector("a[href='/delete']")).click();
         Driver.getDriver().close();
         ReusableMethods.switchToWindow(0);
         allPages.vendorRegisterPage().verificationCodeBox.sendKeys(code);
