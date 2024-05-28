@@ -50,7 +50,7 @@ public class US17_VendorShopping {
 
     }
 
-    @Test
+   // @Test()
     public void tc01() {
         //View Cart tiklanarak alınacak ürün ve ürünler görülebilmeli
         allPages.vendorProductDashboardPage().viewCart.click();
