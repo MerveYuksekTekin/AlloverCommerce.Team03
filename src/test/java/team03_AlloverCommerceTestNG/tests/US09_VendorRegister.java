@@ -6,6 +6,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WindowType;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import team03_AlloverCommerceTestNG.pages.Pages;
@@ -223,6 +224,7 @@ Assert.assertEquals(ReusableMethods.emailAndCodeMessage(),"Email: This field is 
         ReusableMethods.click(allPages.vendorRegisterPage().registerButton);
 
         // Kayıt işleminin gerçekleşmediği doğrula
+        Assert.assertEquals(ReusableMethods.passwordWrongMessage(),"Confirm Password: This field is required.");
 
 
     }
@@ -413,7 +415,7 @@ Assert.assertEquals(ReusableMethods.emailAndCodeMessage(),"Email: This field is 
         ReusableMethods.click(allPages.vendorRegisterPage().registerButton);
 
         // Password boxa küçük harf içermeyip, büyük harf,rakam ve special karakter içermeyen veri girildiğinde kayıt işleminin gerçekleşmediğini doğrula
-        //Assert.assertEquals(ReusableMethods.passwordWrongMessage(),"Confirm Password: This field is required.");
+        Assert.assertEquals(ReusableMethods.passwordWrongMessage(),"Confirm Password: This field is required.");
     }
 
     @Test
@@ -434,7 +436,7 @@ Assert.assertEquals(ReusableMethods.emailAndCodeMessage(),"Email: This field is 
         ReusableMethods.click(allPages.vendorRegisterPage().registerButton);
 
         // Password boxa küçük harf , rakam ve special karakter içerip ,büyük harf içermeyen bir veri girildiğinde kayıt işleminin gerçekleşmediğini doğrula
-        //Assert.assertEquals(ReusableMethods.passwordWrongMessage(),"Confirm Password: This field is required.");
+        Assert.assertEquals(ReusableMethods.passwordWrongMessage(),"Confirm Password: This field is required.");
 
     }
 
@@ -453,7 +455,7 @@ Assert.assertEquals(ReusableMethods.emailAndCodeMessage(),"Email: This field is 
         // Password küçük harf , büyük harf ve special karakter içerip ,rakam içermeyen bir veri girdiğimizde kayıt işleminin gerçekleşmediğini doğrula
 
         Assert.assertEquals(allPages.vendorRegisterPage().emailWrongText.getText(),"Password strength should be atleast \"Good\".", "Email input value is not as expected.");
-        //Password strength should be atleast "Good".
+
     }
 
     @Test
@@ -469,6 +471,7 @@ Assert.assertEquals(ReusableMethods.emailAndCodeMessage(),"Email: This field is 
         // Register butonuna tıkla
         ReusableMethods.click(allPages.vendorRegisterPage().registerButton);
         // Password boxa küçük harf , büyük harf ve rakam içerip ,special karakter içermeyen bir veri girdiğinde kayıt işleminin gerçeklemediğini doğrula
+        Assert.assertEquals(ReusableMethods.passwordWrongMessage(),"Confirm Password: This field is required.");
     }
 
     @Test
@@ -568,9 +571,12 @@ Assert.assertEquals(ReusableMethods.emailAndCodeMessage(),"Email: This field is 
         // "This Email already exists. Please login to the site and apply as vendor." mesajının alındığını doğrula
         Assert.assertEquals(allPages.vendorRegisterPage().emailWrongText.getText(),"This Email already exists. Please login to the site and apply as vendor.");
 
-
-
     }
 
+    @AfterMethod
+    public void tearDown() {
 
+        Driver.getDriver().findElement(By.linkText("Not right now")).click();
+        ReusableMethods.logOut();
+    }
 }

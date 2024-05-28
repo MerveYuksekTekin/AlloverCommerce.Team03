@@ -286,6 +286,11 @@ public class ReusableMethods {
         return dynamicText;
     }
 
+    public static void logOut(){
+        ReusableMethods.scroll(allPages.vendorProductManagerPage().addNewCoupon);
+        allPages.vendorProductManagerPage().addNewCoupon.submit();
+    }
+
 
 
 }
