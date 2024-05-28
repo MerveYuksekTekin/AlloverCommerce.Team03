@@ -24,7 +24,7 @@ public class P18_VendorProductManagerPage {
     public  WebElement discountType;
     @FindBy(xpath = "//*[@id='coupon_amount']")
     public  WebElement couponAmountBox;
-<<<<<<< HEAD
+
     @FindBy(css = "input[id='expiry_date']")
     public WebElement couponsExpiryDate;
     @FindBy(xpath = "(//input[@type='checkbox'])[1]")
