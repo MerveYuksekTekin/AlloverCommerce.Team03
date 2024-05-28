@@ -13,7 +13,7 @@ public class P15_VendorAddressesPage {
     public P15_VendorAddressesPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
-    @FindBy(xpath = "//h4[.='Adressses']")
+    @FindBy(xpath = "//h4[.='Addresses']")
     public WebElement addressesTitle;
 
     @FindBy(xpath = "//a[contains(@href, 'shipping') and contains(text(), 'Add')]")
