@@ -36,6 +36,7 @@ public class P18_VendorProductManagerPage {
 
 
 
+
     @FindBy (id = "product_type")
     public WebElement dropdownSimpleProduct;
 

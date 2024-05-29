@@ -1,10 +1,14 @@
 package team03_AlloverCommerceTestNG.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import team03_AlloverCommerceTestNG.utilities.Driver;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class P4_MyAccountPage {
 
@@ -20,6 +24,7 @@ public class P4_MyAccountPage {
 
     @FindBy(xpath = "//a[text()='Browse products']")
     public WebElement browseProduct;
+
    @FindBy(linkText = "Addresses")
     public WebElement addressesButton;
 
@@ -42,7 +47,7 @@ public class P4_MyAccountPage {
     @FindBy(partialLinkText = "Followings")
     public WebElement followingsButton;
 
-    @FindBy(linkText = "Logout")
+    @FindBy(linkText = "Log out")
     public WebElement logoutButton;
 
     @FindBy(xpath= "//*[.='Actions']")
@@ -59,5 +64,18 @@ public class P4_MyAccountPage {
     @FindBy(xpath= "//h4[.='Downloads']")
     public WebElement dowloadsButtonTitle;
 
+    @FindBy(xpath = "(//nav)[1]")
+ public WebElement dashboardMenuTexts;
+
+ public List<String> getLinkTexts() {
+  List<WebElement> linkElements = dashboardMenuTexts.findElements(By.tagName("a"));
+  List<String> linkTexts = new ArrayList<>();
+
+  for (WebElement linkElement : linkElements) {
+   linkTexts.add(linkElement.getText());
+  }
+
+  return linkTexts;
+ }
 
 }
