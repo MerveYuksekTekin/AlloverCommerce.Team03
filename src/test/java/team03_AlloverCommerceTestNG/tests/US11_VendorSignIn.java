@@ -9,6 +9,9 @@ import team03_AlloverCommerceTestNG.utilities.ConfigReader;
 import team03_AlloverCommerceTestNG.utilities.Driver;
 import team03_AlloverCommerceTestNG.utilities.ReusableMethods;
 
+import java.util.Arrays;
+import java.util.List;
+
 //deneme-2
 public class US11_VendorSignIn {
     Pages allPages = new Pages();
@@ -39,7 +42,7 @@ public class US11_VendorSignIn {
 
         // Sign Out görülmeli
         Assert.assertTrue(allPages.homePage().signOutButton.isDisplayed());
-
+ReusableMethods.logOut();
 
     }
 
@@ -130,6 +133,22 @@ public class US11_VendorSignIn {
         ReusableMethods.click(allPages.homePage().myAccountButton);
 
         //Dashboard altında  Store manager, orders, downloads, addresses , account details, wishlist, Support tickets, followings ve log out seçeneklerinin görüldüğünü doğrula
+        List<String> linkTexts = allPages.myAccountPage().getLinkTexts();
+        List<String> expectedTexts = Arrays.asList(
+                "Dashboard",
+                "Store Manager",
+                "Orders",
+                "Downloads",
+                "Addresses",
+                "Account details",
+                "Wishlist",
+                "Support Tickets",
+                "Followings",
+                "Logout"
+        );
+        Assert.assertEquals(linkTexts, expectedTexts);
+        ReusableMethods.logOut();
+
 
     }
 
@@ -153,6 +172,7 @@ public class US11_VendorSignIn {
 
         //Store manager başlığı görüldüğünü doğrula
         Assert.assertTrue(allPages.vendorStoreManagerPage().storeManagerTitle.isDisplayed());
+        ReusableMethods.logOut();
 
     }
 
@@ -176,6 +196,7 @@ public class US11_VendorSignIn {
 
         //Addresses başlığı görüldüğünü doğrula
         Assert.assertTrue(allPages.myAccountPage().ordersButtonTitle.isDisplayed());
+        ReusableMethods.logOut();
 
     }
 
@@ -199,6 +220,7 @@ public class US11_VendorSignIn {
 
         //Downloads başlığının görüldüğünü doğrula
         Assert.assertTrue(allPages.myAccountPage().dowloadsButtonTitle.isDisplayed());
+        ReusableMethods.logOut();
 
     }
 
@@ -222,6 +244,7 @@ public class US11_VendorSignIn {
 
         //Addresses başlığı görüldüğünü doğrula
         Assert.assertTrue(allPages.vendorAddressesPage().addressesTitle.isDisplayed());
+        ReusableMethods.logOut();
 
     }
 
@@ -245,6 +268,7 @@ public class US11_VendorSignIn {
 
         //Account details başlığı görüldüğünü doğrula
         Assert.assertTrue(allPages.myAccountPage().accountDetailsButton.isDisplayed());
+        ReusableMethods.logOut();
 
     }
 
@@ -268,6 +292,7 @@ public class US11_VendorSignIn {
 
         //Ticket(s) başlığı görülmeli
         Assert.assertTrue(allPages.wishlistPage().wishlistTitle.isDisplayed());
+        ReusableMethods.logOut();
 
     }
 
@@ -291,6 +316,7 @@ public class US11_VendorSignIn {
 
         //Ticket(s) başlığı görülmeli
         Assert.assertTrue(allPages.myAccountPage().supportTicketsButtonTicketsText.isDisplayed());
+        ReusableMethods.logOut();
 
     }
 
@@ -314,6 +340,7 @@ public class US11_VendorSignIn {
 
         //Actions başlığı görülmeli
         Assert.assertTrue(allPages.myAccountPage().followingButtonActionText.isDisplayed());
+        ReusableMethods.logOut();
 
 
     }
@@ -338,6 +365,30 @@ public class US11_VendorSignIn {
         Assert.assertTrue(allPages.homePage().signInButton.isDisplayed());
 
     }
+    @Test
+    public void tc16() {
+
+        // Kayıtlı bir email adresi girilmeli
+        allPages.userVendorLoginPage().emailBox.sendKeys("ziyang.adithya@floodouts.com");
+
+        // Password boxa basina yeya sonuna space koyarak kayitli olan passwordu gir
+        allPages.userVendorLoginPage().passwordBox.sendKeys(" aaaaaaaaaa11");
+
+        // Sign In butonu tıklanır olmalı
+        allPages.userVendorLoginPage().signInButton.click();
+
+        //Giriş yapılmadığını doğrula
+        Assert.assertTrue(allPages.userVendorLoginPage().warningMessage.isDisplayed());
+
+
+    }
+
+
+
+
+
+
+
 
     @AfterMethod
     public void tearDown() {

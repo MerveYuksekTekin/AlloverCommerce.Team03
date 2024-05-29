@@ -1,9 +1,7 @@
-package team03_AlloverCommerceTestNG.tests;
+package team03_AlloverCommerceTestNG.tests.US09_VendorRegister;
 
-import com.beust.ah.A;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WindowType;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -14,7 +12,7 @@ import team03_AlloverCommerceTestNG.utilities.ConfigReader;
 import team03_AlloverCommerceTestNG.utilities.Driver;
 import team03_AlloverCommerceTestNG.utilities.ReusableMethods;
 
-public class US09_VendorRegister {
+public class US09_TC01_TC16_VendorRegister {
 
     Pages allPages = new Pages();
 
@@ -50,6 +48,8 @@ public class US09_VendorRegister {
 
         // Welcome to Allover Commerce! yazısı göründüğünü doğrula
         Assert.assertEquals(allPages.vendorRegisterPage().welcomeToAllevorCommerce.getText(), "Welcome to Allover Commerce!");
+        Driver.getDriver().findElement(By.cssSelector("a[href=\"https://allovercommerce.com/store-manager/\"]")).click();
+        ReusableMethods.logOut();
 
     }
 
@@ -321,6 +321,7 @@ Assert.assertEquals(ReusableMethods.emailAndCodeMessage(),"Email: This field is 
         Driver.getDriver().switchTo().newWindow(WindowType.TAB);
         Driver.getDriver().get("https://www.fakemail.net/");
         String email=Driver.getDriver().findElement(By.id("email")).getText();
+        Driver.getDriver().close();
         ReusableMethods.switchToWindow(0);
         allPages.vendorRegisterPage().emailBox.sendKeys(email);
 
@@ -345,13 +346,20 @@ Assert.assertEquals(ReusableMethods.emailAndCodeMessage(),"Email: This field is 
         //Verification Code boxa geçerli bir code gir
         ReusableMethods.switchToWindow(1);
         Driver.getDriver().findElement(By.xpath("(//tr[@data-href='2'])[1]")).click();
+        // Driver.getDriver().findElement(By.xpath("(//tr[@data-href='2'])[1]")).click();
         Driver.getDriver().switchTo().frame("iframeMail");
         String code=Driver.getDriver().findElement(By.tagName("b")).getText();
+        Driver.getDriver().switchTo().defaultContent();
+        Driver.getDriver().findElement(By.cssSelector("span.glyphicon.glyphicon-share-alt.zavriOkno.zrcadli")).click();
+        Driver.getDriver().findElement(By.cssSelector("a[href='/delete']")).click();
+
+        Driver.getDriver().close();
         ReusableMethods.switchToWindow(0);
         allPages.vendorRegisterPage().verificationCodeBox.sendKeys(code);
         //Code'un text kutusuna girildiğini doğrula
         String enteredValue = allPages.vendorRegisterPage().verificationCodeBox.getAttribute("value");
         Assert.assertEquals(enteredValue, code, "Email input value is not as expected.");
+        Driver.getDriver().navigate().refresh();
     }
 
     @Test
@@ -576,7 +584,6 @@ Assert.assertEquals(ReusableMethods.emailAndCodeMessage(),"Email: This field is 
     @AfterMethod
     public void tearDown() {
 
-        Driver.getDriver().findElement(By.linkText("Not right now")).click();
-        ReusableMethods.logOut();
+
     }
 }
