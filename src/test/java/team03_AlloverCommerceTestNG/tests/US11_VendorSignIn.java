@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import team03_AlloverCommerceTestNG.pages.P1_HomePage;
 import team03_AlloverCommerceTestNG.pages.P3_UserVendorLoginPage;
+import team03_AlloverCommerceTestNG.pages.P7_ShoppingPage;
 import team03_AlloverCommerceTestNG.utilities.ConfigReader;
 import team03_AlloverCommerceTestNG.utilities.Driver;
 
@@ -11,6 +12,7 @@ import team03_AlloverCommerceTestNG.utilities.Driver;
 public class US11_VendorSignIn {
     P1_HomePage p1HomePage = new P1_HomePage();
     P3_UserVendorLoginPage p3UVLP = new P3_UserVendorLoginPage();
+
 
     @Test
     public void test01() {
