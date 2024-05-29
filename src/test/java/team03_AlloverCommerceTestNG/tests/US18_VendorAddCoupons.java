@@ -36,63 +36,87 @@ public class US18_VendorAddCoupons {
         allpages.userVendorLoginPage().emailBox.sendKeys("nike.crew@floodouts.com");
         allpages.userVendorLoginPage().passwordBox.sendKeys("ft123456");
         allpages.userVendorLoginPage().signInButton.click();
-
+        //Sign outa tikla
         allpages.homePage().signOutButton.click();
 
-       allpages.myAccountPage().storeManagerButton.click();
+
+        allpages.myAccountPage().storeManagerButton.click();
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.waitForSecond(3);
-        //actions.moveToElement(allpages.vendorProductManagerPage().couponsButton).perform();
         allpages.vendorProductManagerPage().coupons.click();
-        WebElement addnewcoupon =Driver.getDriver().findElement(By.xpath("//*[@id='add_new_coupon_dashboard']"));
 
-
-       //JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        //js.executeScript("arguments[0].scrollIntoView(true)",addnewcoupon);
-        ReusableMethods.click(addnewcoupon);
+        ReusableMethods.click(allpages.vendorProductManagerPage().addNewCoupon);
         ReusableMethods.scroll(allpages.vendorProductManagerPage().addNewCoupon);
         allpages.vendorProductManagerPage().addNewCoupon.click();
 
     }
 
     @Test
-    public void tc02() {
+    public void test01() {
+        //Code kutucuguna  coupons kodu yazilabildigini dogrula
         ReusableMethods.scroll(allpages.vendorProductManagerPage().codeBox);
-        allpages.vendorProductManagerPage().codeBox.sendKeys("SPRINGSALE20");
+        allpages.vendorProductManagerPage().codeBox.sendKeys(Keys.DELETE,"SPRINGSALE20");//Her testte kupon adını degistirmelisin; aynı kupon var diyor yoksa
+        Assert.assertTrue(allpages.vendorProductManagerPage().codeBox.getAttribute("value")
+                .contains("SPRINGSALE20"));
+       ReusableMethods.waitForSecond(2);
+        //Description kismina aciklama yazilabildigini dogrula
+        ReusableMethods.click(allpages.vendorProductManagerPage().descriptionBox);
+        allpages.vendorProductManagerPage().descriptionBox
+                .sendKeys("Bahar sezonu indirimleri için %20 indirim kuponu.");
+        Assert.assertTrue(allpages.vendorProductManagerPage().descriptionBox.getAttribute("value")
+                .contains("Bahar sezonu indirimleri için %20 indirim kuponu."));
 
-        allpages.vendorProductManagerPage().descriptionBox.sendKeys("Bahar sezonu indirimleri için %20 indirim kuponu.");
-
-    }
-
-    @Test
-    public void tc03() {
-     //Discount Type; Percentage discount secilebilmeli
+        //Discount Type; Percentage discount secilebildigini dogrula
         WebElement discountype=allpages.vendorProductManagerPage().discountType;
         Select select=new Select(discountype);
         select.selectByVisibleText("Percentage discount");
+        String seciliDiscount1=select.getFirstSelectedOption().getText();
+        Assert.assertEquals(seciliDiscount1,"Percentage discount");
 
 
-    }
+        ReusableMethods.waitForSecond(2);
 
-    @Test
-    public void tc04() {
-        //Discount Type; Fixed product discount secilebilmeli
+        //Discount Type; Fixed Product Discount secilebilmeldigini dogrula
         ReusableMethods.scroll(allpages.vendorProductManagerPage().discountType);
         WebElement fixedproduct=allpages.vendorProductManagerPage().discountType;
-        Select select=new Select(fixedproduct);
-        select.selectByIndex(1);
+        Select select1=new Select(fixedproduct);
+        select.selectByVisibleText("Fixed Product Discount");
+        String seciliDiscount2=select.getFirstSelectedOption().getText();
+        Assert.assertEquals(seciliDiscount2,"Fixed Product Discount");
 
-
-    }
-
-    @Test
-    public void tc05() {
-        //Coupon amount yazilabilmeli
+        ////Coupon amount yazilabildigini dogrula
         ReusableMethods.scroll(allpages.vendorProductManagerPage().couponAmountBox);
-        allpages.vendorProductManagerPage().couponAmountBox.sendKeys("50");
+        allpages.vendorProductManagerPage().couponAmountBox.sendKeys(Keys.DELETE,"50");
+        Assert.assertEquals(allpages.vendorProductManagerPage().
+        couponAmountBox.getAttribute("value"),"50");
 
 
+        //Coupon Expiry date girilebildigini dogrula
+        ReusableMethods.scroll(allpages.vendorProductManagerPage().couponsExpiryDate);
+        allpages.vendorProductManagerPage().couponsExpiryDate.sendKeys("2024-05-28",Keys.ENTER);
+        Assert.assertEquals(allpages.vendorProductManagerPage().
+                couponsExpiryDate.getAttribute("value"),"2024-05-28");
 
+        //Allow free shipping secilebildigini dogrula
+        ReusableMethods.waitForSecond(2);
+        allpages.vendorProductManagerPage().AllowFreeShippingCheckbox.click();
+        Assert.assertTrue(allpages.vendorProductManagerPage().AllowFreeShippingCheckbox.isSelected());
+
+        //Show one store secilebildigini dogrula
+        ReusableMethods.scroll(allpages.vendorProductManagerPage().ShowOnStoreCheckbox);
+        //ReusableMethods.waitForSecond(2);
+        allpages.vendorProductManagerPage().ShowOnStoreCheckbox.click();
+        ReusableMethods.waitForSecond(3);
+
+        //Coupon olusturuldugunu dogrula
+
+        ReusableMethods.scroll(allpages.vendorProductManagerPage().couponsSubmitButton);
+        ReusableMethods.waitForSecond(2);
+        ReusableMethods.click(allpages.vendorProductManagerPage().couponsSubmitButton);
+        ReusableMethods.waitForSecond(2);
 
     }
+
 }
+
+

@@ -21,8 +21,13 @@ public class P4_MyAccountPage {
      @FindBy(partialLinkText = "Store Manager")
     public WebElement storeManagerButton;
 
+
+    @FindBy(xpath = "//a[text()='Browse products']")
+    public WebElement browseProduct;
+
    @FindBy(linkText = "Addresses")
     public WebElement addressesButton;
+
 
     @FindBy(linkText = "Orders")
     public WebElement ordersButton;

@@ -1,4 +1,5 @@
 package team03_AlloverCommerceTestNG.pages;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -24,6 +25,18 @@ public class P18_VendorProductManagerPage {
     public  WebElement discountType;
     @FindBy(xpath = "//*[@id='coupon_amount']")
     public  WebElement couponAmountBox;
+
+    @FindBy(css = "input[id='expiry_date']")
+    public WebElement couponsExpiryDate;
+    @FindBy(xpath = "(//input[@type='checkbox'])[1]")
+    public WebElement AllowFreeShippingCheckbox;
+    @FindBy(xpath = "(//input[@type='checkbox'])[2]")
+    public WebElement ShowOnStoreCheckbox;
+    @FindBy(xpath = "(//input[@type='submit'])[1]")
+    public WebElement couponsSubmitButton;
+
+
+
 
     @FindBy (id = "product_type")
     public WebElement dropdownSimpleProduct;
@@ -61,18 +74,55 @@ public class P18_VendorProductManagerPage {
     @FindBy(id ="__wp-uploader-id-1")
     public WebElement selectFiles;
 
+
     @FindBy(xpath = "//button[text()='Select']")
     public WebElement selectButton;
 
-    @FindBy(xpath = "//div[@class='media-frame-content']//li[contains(@class, 'attachment')]//img")
-    public WebElement addedImage;
+
 
     @FindBy (id= "pro_title")
     public WebElement productTitle;
 
+    @FindBy(xpath = "//*[@value='998']")
+    public WebElement categoryArabalar;
 
-    public  WebElement shortDescription;
+    @FindBy(xpath = " //*[.='+Add new category']")
+    public  WebElement addNewButton;
 
+    @FindBy(xpath = "//*[@value='298']")
+    public WebElement productApple;
+
+    @FindBy(id ="wcfm_new_cat")
+    public  WebElement categoryName;
+
+    @FindBy(id = "wcfm_new_parent_cat")
+    public  WebElement parentCategoryButton;
+
+    @FindBy(xpath = "//*[@value='1463']")
+    public WebElement parentAtli;
+
+    @FindBy(xpath = "//*[@class='button wcfm_add_category_bt wcfm_add_taxonomy_bt']")
+    public WebElement addCategoryButton;
+
+    @FindBy(xpath = " //*[.='+Add new Product brands']")
+    public  WebElement addNewProductButton;
+
+    @FindBy(id = "wcfm_new_product_brand")
+    public  WebElement productName;
+    @FindBy(id = "wcfm_new_parent_product_brand")
+    public  WebElement parentTaxonomyButton;
+
+    @FindBy(xpath = "//*[@value='1255']")
+    public WebElement book;
+
+    @FindBy(xpath = "//*[@class='button wcfm_add_category_bt wcfm_add_taxonomy_bt']")
+    public WebElement addParentButton;
+
+    @FindBy(id= "featured_img_display")
+     public WebElement imageverify;
+
+    @FindBy (id = "gallery_img_gimage_0_display")
+    public  WebElement uploadsmallphoto;
 
 
 
@@ -109,5 +159,11 @@ public class P18_VendorProductManagerPage {
     @FindBy(className= "wcfm_product_title" )
     public List<WebElement> addedProducts;
 
+
+
+
+
+
 }
+
 
