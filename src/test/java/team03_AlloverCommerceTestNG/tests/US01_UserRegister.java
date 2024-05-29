@@ -1,4 +1,4 @@
 package team03_AlloverCommerceTestNG.tests;
 
-public class US09 {
+public class US01_UserRegister {
 }
