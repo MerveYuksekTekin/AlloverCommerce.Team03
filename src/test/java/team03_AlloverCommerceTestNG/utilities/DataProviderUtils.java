@@ -13,20 +13,6 @@ public class DataProviderUtils {
         };
     }
 
-    @DataProvider(name = "negativeTestData")
-    public static Object[][] provideNegativeTestData() {
-        return new Object[][] {
-                { "17" },   // Alt sınırın altı
-                { "101" }   // Üst sınırın üstü
-        };
-    }
 
-    @DataProvider(name = "invalidTestData")
-    public static Object[][] provideinvalidTestData() {
-        return new Object[][] {
-                { "ali" },   // invalidTestData
-                { "?" },
-                { "-5" }
-        };
-    }
+
 }

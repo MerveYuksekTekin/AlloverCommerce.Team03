@@ -7,6 +7,7 @@ import team03_AlloverCommerceTestNG.utilities.Driver;
 
 public class P7_ShoppingPage {
 
+<<<<<<< HEAD
     public P7_ShoppingPage() {
         PageFactory.initElements(Driver.getDriver(),this);
     }
@@ -30,13 +31,5 @@ public class P7_ShoppingPage {
 
     @FindBy(xpath = "//button[@title='Minus']")
     public WebElement buttonMinus;
-
-
-
-
-
-
-
-
 
 }
