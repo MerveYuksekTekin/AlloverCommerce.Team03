@@ -50,7 +50,9 @@ public class US11_VendorSignIn {
         Assert.assertTrue(allPages.homePage().signOutButton.isDisplayed());
         ReusableMethods.logOut();
 
+
         ExtentReportUtils.extentTestPass("Sign Out görüldü");
+
 
     }
 
@@ -474,8 +476,6 @@ public class US11_VendorSignIn {
     }
 
 
-    @AfterMethod
-    public void tearDown() {
 
-    }
+
 }
