@@ -4,7 +4,12 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import team03_AlloverCommerceTestNG.pages.P1_HomePage;
+import team03_AlloverCommerceTestNG.pages.P3_UserVendorLoginPage;
+import team03_AlloverCommerceTestNG.pages.P7_ShoppingPage;
 import team03_AlloverCommerceTestNG.pages.Pages;
+
 import team03_AlloverCommerceTestNG.utilities.ConfigReader;
 import team03_AlloverCommerceTestNG.utilities.Driver;
 import team03_AlloverCommerceTestNG.utilities.ReusableMethods;
@@ -16,8 +21,10 @@ import java.util.List;
 public class US11_VendorSignIn {
     Pages allPages = new Pages();
 
+
     @BeforeMethod
     public void setUp() {
+
         // Siteye ulaşılmalı
         Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
 
