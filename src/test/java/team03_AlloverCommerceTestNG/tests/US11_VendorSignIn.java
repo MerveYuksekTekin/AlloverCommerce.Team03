@@ -4,13 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-<<<<<<< HEAD
-import team03_AlloverCommerceTestNG.pages.P1_HomePage;
-import team03_AlloverCommerceTestNG.pages.P3_UserVendorLoginPage;
-import team03_AlloverCommerceTestNG.pages.P7_ShoppingPage;
-=======
 import team03_AlloverCommerceTestNG.pages.Pages;
->>>>>>> main
 import team03_AlloverCommerceTestNG.utilities.ConfigReader;
 import team03_AlloverCommerceTestNG.utilities.Driver;
 import team03_AlloverCommerceTestNG.utilities.ReusableMethods;
@@ -22,14 +16,8 @@ import java.util.List;
 public class US11_VendorSignIn {
     Pages allPages = new Pages();
 
-<<<<<<< HEAD
-
-    @Test
-    public void test01() {
-=======
     @BeforeMethod
     public void setUp() {
->>>>>>> main
         // Siteye ulaşılmalı
         Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
 
@@ -54,7 +42,7 @@ public class US11_VendorSignIn {
 
         // Sign Out görülmeli
         Assert.assertTrue(allPages.homePage().signOutButton.isDisplayed());
-ReusableMethods.logOut();
+        ReusableMethods.logOut();
 
     }
 
@@ -394,11 +382,6 @@ ReusableMethods.logOut();
 
 
     }
-
-
-
-
-
 
 
 
