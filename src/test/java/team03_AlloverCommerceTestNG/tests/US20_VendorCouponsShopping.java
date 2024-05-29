@@ -7,12 +7,11 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import team03_AlloverCommerceTestNG.pages.Pages;
-import team03_AlloverCommerceTestNG.utilities.ConfigReader;
-import team03_AlloverCommerceTestNG.utilities.Driver;
-import team03_AlloverCommerceTestNG.utilities.ReusableMethods;
+import team03_AlloverCommerceTestNG.utilities.*;
 
 public class US20_VendorCouponsShopping {
-    Actions actions = new Actions(Driver.getDriver());
+
+
 Pages allPages = new Pages();
     @BeforeMethod
     public void setUp() {
@@ -24,25 +23,23 @@ Pages allPages = new Pages();
         allPages.userVendorLoginPage().emailBox.sendKeys("gmt_2601@hotmail.com");
         allPages.userVendorLoginPage().passwordBox.sendKeys("Mm123456.");
         allPages.userVendorLoginPage().signInButton.click();
+    }
 
+    @AfterMethod
+    public void tearDown() {
+        //Driver.closeDriver();
+    }
+
+    @Test
+    public void tc01() {
         //Search kutusuna tikla
         ReusableMethods.click(allPages.vendorProductDashboardPage().searchBox);
 
         //Database de tanımlı olan bir ürün ismi yaz,Entera ya da search simgesine tıkla
         allPages.vendorProductDashboardPage().searchBox.sendKeys("iphone", Keys.ENTER);
 
-
-    }
-
-    @AfterMethod
-    public void tearDown() {
-        Driver.closeDriver();
-    }
-
-    @Test
-    public void tc01() {
         //Iphone 15 Pro Max isimli ürüne tıkla
-        ReusableMethods.click(allPages.vendorCouponsPage().iphone);
+        ReusableMethods.click(allPages.productPage().iphone);
 
         //Açılan sayfada bulunan ADD TO CART butonuna tıkla
         ReusableMethods.click(allPages.vendorProductDashboardPage().addToCartButton);
@@ -51,47 +48,42 @@ Pages allPages = new Pages();
         allPages.vendorProductDashboardPage().cart.click();
 
         //Seçilen ürünlerin sepete eklendiğini doğrula
-        Assert.assertTrue(allPages.vendorCouponsPage().iphone.isDisplayed());
+        Assert.assertTrue(allPages.productPage().iphone.isDisplayed());
     }
 
     @Test
     public void tc02() {
-        //Iphone 15 Pro Max isimli ürüne tıkla
-        ReusableMethods.click(allPages.vendorCouponsPage().iphone);
-
-        //Açılan sayfada bulunan ADD TO CART butonuna tıkla
-        ReusableMethods.click(allPages.vendorProductDashboardPage().addToCartButton);
 
         //Search kutusunun sağındaki Cart iconuna tıkla
-        allPages.vendorProductDashboardPage().cart.click();
+        ReusableMethods.click(allPages.vendorCouponsPage().cartIcon);
 
         //Açılan kutucuktaki View Cart butonuna tıkla
         allPages.vendorProductDashboardPage().viewCart.click();
 
         //Açılan sayfada eklenen ürünlerin görüntülendiğini doğrula
-        Assert.assertTrue(allPages.vendorCouponsPage().productName.isDisplayed());
+        Assert.assertTrue(allPages.productPage().productName.isDisplayed());
     }
 
     @Test
     public void tc03() {
-        //Iphone 15 Pro Max isimli ürüne tıkla
-        ReusableMethods.click(allPages.vendorCouponsPage().iphone);
-
-        //Açılan sayfada bulunan ADD TO CART butonuna tıkla
-        ReusableMethods.click(allPages.vendorProductDashboardPage().addToCartButton);
 
         //Search kutusunun sağındaki Cart iconuna tıkla
-        allPages.vendorProductDashboardPage().cart.click();
+        ReusableMethods.click(allPages.vendorCouponsPage().cartIcon);
 
         //Açılan kutucuktaki CHECHOUT butonuna tıkla
         allPages.vendorCouponsPage().checkoutButton.click();
 
         //Açılan sayfada sepete eklenen ürünlere ait bilgilerin görüntülendiğini doğrula
-        Assert.assertTrue(allPages.vendorCouponsPage().productName.getText().contains("Iphone 15 Pro Max"));
+        Assert.assertTrue(allPages.productPage().productName.getText().contains("Iphone 15 Pro Max"));
     }
 
     @Test
     public void tc04() {
+        //Search kutusuna tikla
+        ReusableMethods.click(allPages.vendorCouponsPage().cartIcon);
+
+        //Database de tanımlı olan bir ürün ismi yaz,Entera ya da search simgesine tıkla
+        allPages.vendorProductDashboardPage().searchBox.sendKeys("iphone", Keys.ENTER);
 
         //Iphone 15 Pro Max isimli ürünün üzerindeki cart simgesine tıkla
         //actions.moveToElement(allPages.vendorCouponsPage().iphone).perform();
@@ -109,7 +101,8 @@ Pages allPages = new Pages();
             Assert.assertTrue(true);
         }
         //Country / Region bilgisinin otomatik seçili  geldigini dogrula
-       // Assert.assertTrue(allPages.vendorCouponsPage().countryBox.;
+        Assert.assertEquals(allPages.vendorCouponsPage().countryBox.getText(),"Turkey");
+
 
         //Street address bilgisinin otomatik geldigini dogrula
         if (allPages.vendorCouponsPage().streetBox!=null) {
@@ -135,29 +128,23 @@ Pages allPages = new Pages();
 
     @Test
     public void tc05() {
-        //Iphone 15 Pro Max isimli ürüne tıkla
-        ReusableMethods.click(allPages.vendorCouponsPage().iphone);
-
-        //Açılan sayfada bulunan ADD TO CART butonuna tıkla
-        ReusableMethods.click(allPages.vendorProductDashboardPage().addToCartButton);
 
         //Search kutusunun sağındaki Cart iconuna tıkla
-        allPages.vendorProductDashboardPage().cart.click();
+        ReusableMethods.click(allPages.vendorCouponsPage().cartIcon);
 
         //Çıkan kutucuktaki CHECKOUT  butonuna tıkla
-        allPages.vendorCouponsPage().checkoutButton.click();
+        allPages.vendorProductDashboardPage().checkout.click();
 
         //Total, toplam ödenecek rakam bilgisinin görüntülendiğini doğrula
+
+        allPages.vendorProductDashboardPage().totalprice.isDisplayed();
+        ReusableMethods.scroll(allPages.vendorProductDashboardPage().totalprice);
+        Assert.assertTrue(allPages.vendorProductDashboardPage().totalprice.isDisplayed());
 
     }
 
     @Test
     public void tc06() {
-        //Iphone 15 Pro Max isimli ürüne tıkla
-        ReusableMethods.click(allPages.vendorCouponsPage().iphone);
-
-        //Açılan sayfada bulunan ADD TO CART butonuna tıkla
-        ReusableMethods.click(allPages.vendorProductDashboardPage().addToCartButton);
 
         //Search kutusunun sağındaki Cart iconuna tıkla
         allPages.vendorProductDashboardPage().cart.click();
@@ -177,11 +164,6 @@ Pages allPages = new Pages();
 
     @Test
     public void tc07() {
-        //Iphone 15 Pro Max isimli ürüne tıkla
-        ReusableMethods.click(allPages.vendorCouponsPage().iphone);
-
-        //Açılan sayfada bulunan ADD TO CART butonuna tıkla
-        ReusableMethods.click(allPages.vendorProductDashboardPage().addToCartButton);
 
         //Search kutusunun sağındaki Cart iconuna tıkla
         allPages.vendorProductDashboardPage().cart.click();
@@ -205,11 +187,6 @@ Pages allPages = new Pages();
 
     @Test
     public void tc08() {
-        //Iphone 15 Pro Max isimli ürüne tıkla
-        ReusableMethods.click(allPages.vendorCouponsPage().iphone);
-
-        //Açılan sayfada bulunan ADD TO CART butonuna tıkla
-        ReusableMethods.click(allPages.vendorProductDashboardPage().addToCartButton);
 
         //Search kutusunun sağındaki Cart iconuna tıkla
         allPages.vendorProductDashboardPage().cart.click();
@@ -233,11 +210,14 @@ Pages allPages = new Pages();
 
     @Test
     public void tc09() {
-        //Iphone 15 Pro Max isimli ürüne tıkla
-        ReusableMethods.click(allPages.vendorCouponsPage().iphone);
+        //Search kutusuna tikla
+        ReusableMethods.click(allPages.vendorProductDashboardPage().searchBox);
 
-        //Açılan sayfada bulunan ADD TO CART butonuna tıkla
-        ReusableMethods.click(allPages.vendorProductDashboardPage().addToCartButton);
+        //Database de tanımlı olan bir ürün ismi yaz,Entera ya da search simgesine tıkla
+        allPages.vendorProductDashboardPage().searchBox.sendKeys("iphone", Keys.ENTER);
+
+        //Iphone 15 Pro Max isimli ürüne tıkla
+        ReusableMethods.click(allPages.productPage().iphone);
 
         //Search kutusunun sağındaki Cart iconuna tıkla
         allPages.vendorProductDashboardPage().cart.click();
@@ -269,8 +249,117 @@ Pages allPages = new Pages();
 
         //VIEW butonuna tıkla
        ReusableMethods.click(allPages.vendorCouponsPage().viewButton);
+       ReusableMethods.waitForSecond(2);
 
         //Alışverişe ait bilgilerin görüntülendiğini doğrula
+
+    }
+
+    @Test
+    public void tc11() {
+        //Search kutusuna tikla
+        ReusableMethods.click(allPages.vendorProductDashboardPage().searchBox);
+
+        //Database de tanımlı olan bir ürün ismi yaz,Entera ya da search simgesine tıkla
+        allPages.vendorProductDashboardPage().searchBox.sendKeys("Basic Handbag", Keys.ENTER);
+
+        //Açılan sayfada bulunan ADD TO CART butonuna tıkla
+        ReusableMethods.click(allPages.vendorProductDashboardPage().addToCartButton);
+
+        //Search kutusunun sağındaki Cart iconuna tıkla
+        allPages.vendorProductDashboardPage().cart.click();
+
+        //Çıkan kutucuktaki CHECKOUT  butonuna tıkla
+        allPages.vendorCouponsPage().checkoutButton.click();
+
+        //ENTER CODE YOUR yazınına tıkla
+        allPages.vendorCouponsPage().enterCodeYourText.click();
+
+        //Açılan kutucuğa geçerli kupon kodunu gir
+        allPages.vendorCouponsPage().couponCodeBox.sendKeys("SALE2024");
+
+        //APPLY COUPON butonuna tıkla
+        allPages.vendorCouponsPage().applyCouponButton.click();
+
+        //Coupon kodunun girildiğini doğrula
+        Assert.assertEquals(allPages.vendorCouponsPage().couponCodeVerify.getText(),"Coupon code applied successfully.");
+    }
+
+    @Test
+    public void tc12() {
+        //Search kutusunun sağındaki Cart iconuna tıkla
+        ReusableMethods.click(allPages.vendorProductDashboardPage().cart);
+
+        //Çıkan kutucuktaki CHECKOUT  butonuna tıkla
+        allPages.vendorProductDashboardPage().checkout.click();
+
+        //ENTER CODE YOUR yazınına tıkla
+        allPages.vendorCouponsPage().enterCodeYourText.click();
+
+        //Açılan kutucuğa geçersiz kupon kodunu gir
+        allPages.vendorCouponsPage().couponCodeBox.sendKeys("SALE2020");
+
+        //APPLY COUPON butonuna tıkla
+        allPages.vendorCouponsPage().applyCouponButton.click();
+
+        //"Coupon "SALE2020" does not exist!"("SALE2020" kuponu mevcut değil!) mesajı alındığını doğrula
+       Assert.assertEquals(allPages.vendorCouponsPage().couponCodeVerify.getText(),"Coupon \"sale2020\" does not exist!");
+    }
+
+    @Test
+    public void tc13() {
+        //Search kutusuna tikla
+        ReusableMethods.click(allPages.vendorProductDashboardPage().searchBox);
+
+        //Database de tanımlı olan bir ürün ismi yaz,Entera ya da search simgesine tıkla
+        allPages.vendorProductDashboardPage().searchBox.sendKeys("iphone", Keys.ENTER);
+
+        //Iphone 15 Pro Max isimli ürüne tıkla
+        ReusableMethods.click(allPages.productPage().iphone);
+
+        //Açılan sayfada bulunan ADD TO CART butonuna tıkla
+        ReusableMethods.click(allPages.vendorProductDashboardPage().addToCartButton);
+
+        //Search kutusunun sağındaki Cart iconuna tıkla
+        ReusableMethods.click(allPages.vendorProductDashboardPage().cart);
+
+        //Çıkan kutucuktaki CHECKOUT  butonuna tıkla
+        allPages.vendorProductDashboardPage().checkout.click();
+
+        //ENTER CODE YOUR yazınına tıkla
+        allPages.vendorCouponsPage().enterCodeYourText.click();
+
+        //Açılan kutucuğa geçerli kupon kodunu gir
+        allPages.vendorCouponsPage().couponCodeBox.sendKeys("SALE2024");
+
+        //APPLY COUPON butonuna tıkla
+        allPages.vendorCouponsPage().applyCouponButton.click();
+
+        //"Sorry, this coupon is not applicable to selected products"
+        // ("Üzgünüz, bu kupon seçili ürünlerde geçerli değildir.") mesajı alındığını doğrula
+        Assert.assertEquals(allPages.vendorCouponsPage().couponCodeVerify,"Sorry, this coupon is not applicable to selected products");
+
+    }
+
+    @Test
+    public void tc14() {
+        //Search kutusunun sağındaki Cart iconuna tıkla
+        ReusableMethods.click(allPages.vendorProductDashboardPage().cart);
+
+        //Çıkan kutucuktaki CHECKOUT  butonuna tıkla
+        allPages.vendorProductDashboardPage().checkout.click();
+
+        //ENTER CODE YOUR yazınına tıkla
+        allPages.vendorCouponsPage().enterCodeYourText.click();
+
+        //Açılan kutucuğu boş bırak
+
+        //APPLY COUPON butonuna tıkla
+        allPages.vendorCouponsPage().applyCouponButton.click();
+        System.out.println(allPages.vendorCouponsPage().couponCodeVerify.getText());
+
+        //"Please enter a coupon code." mesajı alındığını  doğrula
+       Assert.assertEquals(allPages.vendorCouponsPage().couponCodeVerify,"Please enter a coupon code.");
 
     }
 }

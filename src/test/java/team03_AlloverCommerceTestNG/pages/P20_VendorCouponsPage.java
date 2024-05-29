@@ -9,17 +9,8 @@ public class P20_VendorCouponsPage {
     public P20_VendorCouponsPage() {
         PageFactory.initElements(Driver.getDriver(),this);}
 
-    @FindBy(xpath = "//img[@width='300'][1]")
-    public WebElement iphone;
-
     @FindBy(xpath = "(//*[@href='https://allovercommerce.com/checkout-2/'])[1]")
     public WebElement checkoutButton;
-
-    @FindBy(xpath = "(//*[@class='product-name'])[1]")
-    public WebElement productName;
-
-    @FindBy(className = "cart_item")
-    public WebElement productInfo;
 
     @FindBy(xpath = "//*[@href='?add-to-cart=48566']")
     public WebElement cartSymbol;
@@ -65,4 +56,19 @@ public class P20_VendorCouponsPage {
     public WebElement ordersLink;
     @FindBy(xpath = "(//a[@href='https://allovercommerce.com/my-account-2/view-order/55691/'])[2]")
     public WebElement viewButton;
+
+    @FindBy(className = "showcoupon")
+    public WebElement enterCodeYourText;
+
+    @FindBy(id = "coupon_code")
+    public WebElement couponCodeBox;
+
+    @FindBy(css = "button[name='apply_coupon']")
+    public WebElement applyCouponButton;
+    @FindBy(xpath = "//*[contains(@class,'alert-close-top')]")
+    public WebElement couponCodeVerify;
+
+    @FindBy(xpath ="//a[@class='cart-toggle']")
+    public WebElement cartIcon;
+
 }

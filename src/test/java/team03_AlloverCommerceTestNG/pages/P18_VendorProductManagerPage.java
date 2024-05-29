@@ -34,8 +34,7 @@ public class P18_VendorProductManagerPage {
     @FindBy(xpath = "(//input[@type='submit'])[1]")
     public WebElement couponsSubmitButton;
 
-}
-=======
+
 
     @FindBy (id = "product_type")
     public WebElement dropdownSimpleProduct;
@@ -123,4 +122,4 @@ public class P18_VendorProductManagerPage {
 
 }
 
->>>>>>> b79e742484b4fbb2ba17b0bd45aac26419565c66
+
