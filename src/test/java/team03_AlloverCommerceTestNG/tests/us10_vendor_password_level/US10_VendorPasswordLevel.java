@@ -1,4 +1,4 @@
-package team03_AlloverCommerceTestNG.tests;
+package team03_AlloverCommerceTestNG.tests.us10_vendor_password_level;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -28,7 +28,7 @@ public class US10_VendorPasswordLevel {
         ExtentReportUtils.extentTestInfo("Become a Vendor linkine tıklandı");
     }
 
-    @Test
+    @Test(description = "US10-Vendor Password Level")
     public void tc01() {
         //Password boxa tek harf bir password gir
         allPages.vendorRegisterPage().passwordBox.sendKeys("a");
@@ -39,7 +39,7 @@ public class US10_VendorPasswordLevel {
         ExtentReportUtils.extentTestInfo("Become a Vendor linkine tıklandı");
     }
 
-    @Test
+    @Test(description = "US10-Vendor Password Level")
     public void tc02() {
        // Password boxa aynı iki harf iki rakam ve iki sembol içeren bir pasword gir
         allPages.vendorRegisterPage().passwordBox.sendKeys("aa11..");
@@ -48,7 +48,7 @@ public class US10_VendorPasswordLevel {
         Assert.assertEquals(allPages.vendorRegisterPage().passwordWrongMessage.getText(),"Weak");
     }
 
-    @Test
+    @Test(description = "US10-Vendor Password Level")
     public void tc03() {
        // Password boxa farklı iki harf iki rakam ve iki sembol içeren blr password gir
         allPages.vendorRegisterPage().passwordBox.sendKeys("as12.?");
@@ -57,7 +57,7 @@ public class US10_VendorPasswordLevel {
         Assert.assertEquals(allPages.vendorRegisterPage().passwordWrongMessage.getText(),"Good");
     }
 
-    @Test
+    @Test(description = "US10-Vendor Password Level")
     public void tc04() {
        //Password boxa en az 8 karakterli büyük küçük harf,rakam ve sembol içeren bir password gir
         allPages.vendorRegisterPage().passwordBox.sendKeys("aS12.?a1");
