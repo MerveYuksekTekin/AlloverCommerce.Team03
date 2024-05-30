@@ -31,4 +31,37 @@ public class P7_ShoppingPage {
     @FindBy(xpath = "//button[@title='Minus']")
     public WebElement buttonMinus;
 
+    @FindBy(xpath = "/html/body/div[1]/div[1]/div/ul/li[2]/a")
+    public WebElement billing;
+
+    @FindBy(xpath = "//input[@value='cod']")
+    public WebElement paydoor;
+
+    @FindBy(xpath = "//input[@value='bacs']")
+    public WebElement eftwire;
+
+    @FindBy(css = "#place_order")
+    public WebElement placeorder;
+
+    @FindBy(xpath = "//input[@type='text']")
+    public WebElement couponBox;
+
+    @FindBy(xpath = "//button[@name='apply_coupon']")
+    public WebElement applyCoupon;
+
+    @FindBy(xpath = "//button[@name='clear_cart']")
+    public WebElement clearcart;
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
