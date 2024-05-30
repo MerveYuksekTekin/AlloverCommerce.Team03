@@ -59,13 +59,16 @@ public class US06_Register_Shopping {
 
         //fatura adresi görüntülenebilmeli
         p7SP.billing.click();
+        Thread.sleep(3000);
 
         //kullanıcı ödeme seçeneklerini görüntüleyebilmeli ve pay at the door seçebilmeli
         p7SP.paydoor.click();
+        Thread.sleep(3000);
 
 
         //kullanıcı ödeme seçeneklerini görüntüleyebilmeli ve wire/eft seçeneğini seçebilmeli
         p7SP.eftwire.click();
+        Thread.sleep(3000);
 
 
         p7SP.placeorder.click();
