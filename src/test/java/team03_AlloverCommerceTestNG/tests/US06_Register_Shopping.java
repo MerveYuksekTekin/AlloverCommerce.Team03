@@ -1,18 +1,17 @@
 package team03_AlloverCommerceTestNG.tests;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import team03_AlloverCommerceTestNG.pages.P1_HomePage;
 import team03_AlloverCommerceTestNG.pages.P3_UserVendorLoginPage;
 import team03_AlloverCommerceTestNG.pages.P7_ShoppingPage;
+import team03_AlloverCommerceTestNG.pages.Pages;
 import team03_AlloverCommerceTestNG.utilities.ConfigReader;
 import team03_AlloverCommerceTestNG.utilities.Driver;
 
-public class US06_RegisteratShopping  {
+public class US06_Register_Shopping {
+
+    Pages allPages = new Pages();
 
     @Test
     public void test01() throws InterruptedException{
@@ -22,15 +21,11 @@ public class US06_RegisteratShopping  {
         P7_ShoppingPage p7SP = new P7_ShoppingPage();
 
 
-                // Site anasayfası açılmalı
+        // Site anasayfası açılmalı
         Driver.getDriver().get(ConfigReader.getProperty("us06URL"));
 
-
-
-        // Giriş butonu tıklanır olmalı ve Giriş penceresi açılmalı
+        // Giriş butonu tıklanır olmalı
         p1HomePage.signInButton.click();
-
-
 
         // Kayıtlı bir email adresi girilmeli
         p3UVLP.emailBox.sendKeys(ConfigReader.getProperty("us06name"));
@@ -41,7 +36,6 @@ public class US06_RegisteratShopping  {
         // Sign In butonu tıklanır olmalı
         p3UVLP.signInButton.sendKeys(Keys.ENTER);
         Thread.sleep(3000);
-
 
         //İstenilen ürün aratlıabilmeli
         p7SP.searchBox.sendKeys("Men’s Clothing", Keys.ENTER);
@@ -57,12 +51,24 @@ public class US06_RegisteratShopping  {
 
         //Sepette ürün adeti artırılabilmeli
         p7SP.buttonPlus.click();
+        Thread.sleep(3000);
 
         //Sepette ürün adeti azaltılabilmeli
         p7SP.buttonMinus.click();
+        Thread.sleep(3000);
+
+        //fatura adresi görüntülenebilmeli
+        p7SP.billing.click();
+
+        //kullanıcı ödeme seçeneklerini görüntüleyebilmeli ve pay at the door seçebilmeli
+        p7SP.paydoor.click();
 
 
+        //kullanıcı ödeme seçeneklerini görüntüleyebilmeli ve wire/eft seçeneğini seçebilmeli
+        p7SP.eftwire.click();
 
+
+        p7SP.placeorder.click();
 
 
 
