@@ -13,7 +13,7 @@ public class P13_WishlistPage {
     @FindBy(xpath = "//h2[.='Wishlist']")
     public WebElement wishlistTitle;
 
-    @FindBy (xpath = "(//div[contains(@class,'btn-product-icon wishlist-fragment on-first-load')])[1]")
+    @FindBy (xpath = "(//div[contains(@class,'yith-wcwl-add-to-wishlist')])[1]")
     public WebElement wishListSymbol;
 
     @FindBy (className = "w-icon-heart")
@@ -25,7 +25,7 @@ public class P13_WishlistPage {
     @FindBy(xpath ="(//button[contains(text(),'Quick View')])[1]")
     public WebElement quickViewButton2;
 
-    @FindBy(className ="mfp-close")
+    @FindBy(css ="button[class='mfp-close']")
     public WebElement closeButton;
 
     @FindBy(xpath ="(//a[text()='Add to cart'])[2]")
@@ -34,4 +34,17 @@ public class P13_WishlistPage {
     @FindBy(xpath ="(//a[text()='Add to cart'])[1]")
     public WebElement addToCartButton2;
 
+    @FindBy(xpath ="(//p/a)[1]")
+    public WebElement viewCartButton;
+
+    @FindBy(className ="wc-proceed-to-checkout")
+    public WebElement proceedToCheckout;
+    @FindBy (css = "div[data-fragment-ref='21379']")
+    public WebElement wishList;
+
+    @FindBy(xpath="(//a[@rel='nofollow'])[2]")
+    public WebElement macBookV20Icon;
+
+    @FindBy(xpath="//a[@href='?add_to_wishlist=16777']")
+    public WebElement macBookProIcon;
 }

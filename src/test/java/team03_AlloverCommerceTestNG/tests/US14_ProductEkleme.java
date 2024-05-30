@@ -1,14 +1,12 @@
 package team03_AlloverCommerceTestNG.tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import team03_AlloverCommerceTestNG.pages.Pages;
@@ -27,7 +25,6 @@ import java.util.Set;
 public class US14_ProductEkleme {
     Pages allPages = new Pages();
     ReusableMethods resuable = new ReusableMethods();
-
 
     @BeforeMethod
     public void setUp() {
@@ -113,18 +110,22 @@ public class US14_ProductEkleme {
     public void test06() {
 
         //Ürün Fotografı Eklemek için Sağ Tarafta ki kucuk Resim Ekleme Çerçevesine Tıkla
-        allPages.vendorProductManagerPage().uploadsmallphoto.submit();
+        ReusableMethods.click(allPages.vendorProductManagerPage().uploadsmallphoto);
+        ReusableMethods.waitForSecond(2);
 
        // Cikan Upload Filese tikla
-        allPages.vendorProductManagerPage().selectFiles.submit();
+        ReusableMethods.click( allPages.vendorProductManagerPage().selectFiles);
+
 
 
        // Resim Eklemek için SELECT FILES'a Tıkla
         String filePath = "C:\\Users\\Gebruiker\\OneDrive\\Masaüstü\\logo_360.png";
         resuable.uploadFilePath(filePath);
 
-        allPages.vendorProductManagerPage().selectButton.click();
+
         ReusableMethods.waitForSecond(3);
+         ReusableMethods.click( allPages.vendorProductManagerPage().addGalleryButton);
+
         //Eklenen Resmin Eklendiğini Doğrula
         String imgSrc1 = allPages.vendorProductManagerPage().uploadsmallphoto.getAttribute("src");
 
@@ -133,52 +134,34 @@ public class US14_ProductEkleme {
 
 
 
-
-
-
     }
 
     @Test
     public void test07() {
-        WebDriver driver = Driver.getDriver();
+
 
         //Product Title'a bir veri gir
-        allPages.vendorProductManagerPage().productTitle.sendKeys("Ali");
+        allPages.vendorProductManagerPage().productTitle.sendKeys("Ali", Keys.ENTER);
+
+        Assert.assertTrue(allPages.vendorProductManagerPage().productTitle.getAttribute("class").contains("success"));
         //Short Description'a bir veri gir
 
-        WebElement iframeElement = driver.findElement(By.id("excerpt_ifr"));
-        driver.switchTo().frame(iframeElement);
-        WebElement shortDescription = driver.findElement(By.id("tinymce"));
+        Driver.getDriver().switchTo().frame(0);
+        allPages.vendorProductManagerPage().shortDes.sendKeys("nasilsn");
+         Assert.assertTrue(allPages.vendorProductManagerPage().shortDes.getText().contains("nasilsn"));
 
-        shortDescription.sendKeys("nasilsn");
-
-        driver.switchTo().defaultContent(); // Frame'den çıkış
-
-        // Description'a bir veri gir
-        WebElement iframeElement1 = driver.findElement(By.id("description_ifr"));
-        driver.switchTo().frame(iframeElement1);
-
-        WebElement descriptionTextBox = driver.findElement(By.id("tinymce"));
-        descriptionTextBox.sendKeys("Hava nasil.");
-
-        driver.switchTo().defaultContent();
+        Driver.getDriver().switchTo().defaultContent(); // Frame'den çıkış
+        ReusableMethods.waitForSecond(3);
 
 
-        // Product Title, Short Description ve Descriptiona yazi yazılabildigini dogrula
-        String actualProductTitle = allPages.vendorProductManagerPage().productTitle.getAttribute("value");
-        Assert.assertEquals(actualProductTitle, "Ali");
+        Driver.getDriver().switchTo().frame(1);
+        allPages.vendorProductManagerPage().des.sendKeys("Hava nasil.");
+        Assert.assertTrue(allPages.vendorProductManagerPage().des.getText().contains("Hava nasil."));
+        ReusableMethods.waitForSecond(2);
 
-        driver.switchTo().frame(iframeElement);
-        String enteredShortDescription = driver.findElement(By.id("tinymce")).getText();
-        driver.switchTo().defaultContent();
-        Assert.assertEquals(enteredShortDescription, "nasilsn", "Short Description did not match");
+        Driver.getDriver().switchTo().defaultContent();
 
-        driver.switchTo().frame(iframeElement1);
-        String enteredDescription = driver.findElement(By.id("tinymce")).getText();
-        driver.switchTo().defaultContent();
-        Assert.assertEquals(enteredDescription, "Hava nasil.", "Description did not match");
 
-        System.out.println("Product title, short description, and description successfully entered!");
 
     }
 
@@ -258,11 +241,15 @@ public class US14_ProductEkleme {
     }
 
 
-    @Test
-    public void test12() {
 
 
+
+    @AfterMethod
+    public void tearDown() {
+
+        ReusableMethods.userVendorLogout();
     }
+
 }
 
 
