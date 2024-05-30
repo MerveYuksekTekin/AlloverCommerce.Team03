@@ -298,5 +298,20 @@ public class ReusableMethods {
     }
 
 
+    public static void cartAndCheckout(){
+
+        allPages.vendorProductDashboardPage().cart.click();
+        allPages.vendorCouponsPage().checkoutButton.click();
+    }
+
+    public static void addProductToCart(){
+
+        ReusableMethods.click(allPages.vendorProductDashboardPage().searchBox);
+        allPages.vendorCouponsPage().search.sendKeys(ConfigReader.getProperty("iphone"));
+        allPages.vendorCouponsPage().search.submit();
+        ReusableMethods.click(allPages.productPage().urun);
+        ReusableMethods.click(allPages.vendorProductDashboardPage().addToCartButton);
+
+    }
 
 }
