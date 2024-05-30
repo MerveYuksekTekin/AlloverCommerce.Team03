@@ -121,10 +121,17 @@ public class P18_VendorProductManagerPage {
     @FindBy(id= "featured_img_display")
      public WebElement imageverify;
 
-    @FindBy (id = "gallery_img_gimage_0_display")
+    @FindBy (id="gallery_img_gimage_0_display")
     public  WebElement uploadsmallphoto;
 
+    @FindBy (xpath = "(//button[.='Add to Gallery'])[2]")
+    public  WebElement addGalleryButton;
 
+     @FindBy (id ="tinymce")
+     public WebElement shortDes;
+
+    @FindBy (id ="tinymce")
+    public WebElement des;
 
 
     @FindBy(id = "featured_img_display")
