@@ -31,6 +31,12 @@ public class ReusableMethods {
         allPages.userVendorLoginPage().signInButton.click();
     }
 
+    public static void userVendorLogout(){
+        ReusableMethods.click(allPages.homePage().signOutButton);
+        ReusableMethods.click(allPages.myAccountPage().logoutButton);
+
+    }
+
     protected ExtentReports extentReports;
     protected ExtentHtmlReporter extentHtmlReporter;
     protected ExtentTest extentTest;
