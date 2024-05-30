@@ -7,7 +7,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.DataProvider;
 import team03_AlloverCommerceTestNG.pages.Pages;
 
 import java.awt.*;
@@ -31,9 +30,12 @@ public class ReusableMethods {
         allPages.userVendorLoginPage().signInButton.click();
     }
 
+
+   
     public static void userVendorLogout(){
         ReusableMethods.click(allPages.homePage().signOutButton);
         ReusableMethods.click(allPages.myAccountPage().logoutButton);
+
 
     }
 
