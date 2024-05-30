@@ -7,7 +7,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.DataProvider;
 import team03_AlloverCommerceTestNG.pages.Pages;
 
 import java.awt.*;
@@ -29,6 +28,15 @@ public class ReusableMethods {
         allPages.userVendorLoginPage().emailBox.sendKeys(email);
         allPages.userVendorLoginPage().passwordBox.sendKeys(password);
         allPages.userVendorLoginPage().signInButton.click();
+    }
+
+
+   
+    public static void userVendorLogout(){
+        ReusableMethods.click(allPages.homePage().signOutButton);
+        ReusableMethods.click(allPages.myAccountPage().logoutButton);
+
+
     }
 
     protected ExtentReports extentReports;
@@ -256,5 +264,65 @@ public class ReusableMethods {
         }
     }
 
+    public static void vendorRegisterEmail(){
+        Driver.getDriver().switchTo().newWindow(WindowType.TAB);
+        Driver.getDriver().get("https://www.fakemail.net/");
+        String email=Driver.getDriver().findElement(By.id("email")).getText();
+        ReusableMethods.switchToWindow(0);
+        allPages.vendorRegisterPage().emailBox.sendKeys(email);
+    }
+    public static void vendorRegisterCode(){
+        ReusableMethods.switchToWindow(1);
+        visibleWait(By.xpath("(//tr[@data-href='2'])[1]"), 10);
+        click(Driver.getDriver().findElement(By.xpath("(//tr[@data-href='2'])[1]")));
+       // Driver.getDriver().findElement(By.xpath("(//tr[@data-href='2'])[1]")).click();
+        Driver.getDriver().switchTo().frame("iframeMail");
+        visibleWait(By.tagName("b"), 10);
+        String code = Driver.getDriver().findElement(By.tagName("b")).getText();
+
+        Driver.getDriver().switchTo().defaultContent();
+        click(Driver.getDriver().findElement(By.cssSelector("span.glyphicon.glyphicon-share-alt.zavriOkno.zrcadli")));
+        click(Driver.getDriver().findElement(By.cssSelector("a[href='/delete']")));
+        waitForSecond(2);
+        Driver.getDriver().close();
+        ReusableMethods.switchToWindow(0);
+        allPages.vendorRegisterPage().verificationCodeBox.sendKeys(code);
+    }
+    public static String emailAndCodeMessage(){
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) Driver.getDriver();
+        String dynamicText = (String) jsExecutor.executeScript(
+                "return document.querySelector('.wcfm-message.email_verification_message').textContent;"
+        );
+        return dynamicText;
+    }
+
+    public static String passwordWrongMessage(){
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) Driver.getDriver();
+        String dynamicText = (String) jsExecutor.executeScript(
+                "return document.querySelector('.wcfm-message.wcfm-error').textContent;");
+        return dynamicText;
+    }
+
+    public static void logOut(){
+        allPages.homePage().signOutButton.click();
+        allPages.myAccountPage().logoutButton.click();
+    }
+
+
+    public static void cartAndCheckout(){
+
+        allPages.vendorProductDashboardPage().cart.click();
+        allPages.vendorCouponsPage().checkoutButton.click();
+    }
+
+    public static void addProductToCart(){
+
+        ReusableMethods.click(allPages.vendorProductDashboardPage().searchBox);
+        allPages.vendorCouponsPage().search.sendKeys(ConfigReader.getProperty("iphone"));
+        allPages.vendorCouponsPage().search.submit();
+        ReusableMethods.click(allPages.productPage().urun);
+        ReusableMethods.click(allPages.vendorProductDashboardPage().addToCartButton);
+
+    }
 
 }

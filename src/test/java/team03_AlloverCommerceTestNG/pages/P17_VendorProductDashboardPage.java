@@ -67,11 +67,16 @@ public class P17_VendorProductDashboardPage {
     @FindBy(xpath = "//button[@id='place_order']")
     public WebElement placeOrder;
 
+
+
+
     @FindBy(xpath = "//a[contains(text(),'My Account')]")
     public WebElement myAccount;
 
     @FindBy(xpath = "//*[.='Add New']")
     public WebElement addNewButton;
+
+
 
 
 
