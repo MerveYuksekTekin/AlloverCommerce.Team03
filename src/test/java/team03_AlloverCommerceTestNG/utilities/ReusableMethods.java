@@ -7,7 +7,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.DataProvider;
 import team03_AlloverCommerceTestNG.pages.Pages;
 
 import java.awt.*;
@@ -24,16 +23,19 @@ import java.util.List;
 
 public class ReusableMethods {
 
-    static Pages allPages = new Pages();
+    public static Pages allPages = new Pages();
     public static void userVendorlogin(String email, String password) {
         allPages.userVendorLoginPage().emailBox.sendKeys(email);
         allPages.userVendorLoginPage().passwordBox.sendKeys(password);
         allPages.userVendorLoginPage().signInButton.click();
     }
 
+
+   
     public static void userVendorLogout(){
         ReusableMethods.click(allPages.homePage().signOutButton);
         ReusableMethods.click(allPages.myAccountPage().logoutButton);
+
 
     }
 
@@ -271,10 +273,13 @@ public class ReusableMethods {
     }
     public static void vendorRegisterCode(){
         ReusableMethods.switchToWindow(1);
+        visibleWait(By.xpath("(//tr[@data-href='2'])[1]"), 10);
         click(Driver.getDriver().findElement(By.xpath("(//tr[@data-href='2'])[1]")));
        // Driver.getDriver().findElement(By.xpath("(//tr[@data-href='2'])[1]")).click();
         Driver.getDriver().switchTo().frame("iframeMail");
-        String code=Driver.getDriver().findElement(By.tagName("b")).getText();
+        visibleWait(By.tagName("b"), 10);
+        String code = Driver.getDriver().findElement(By.tagName("b")).getText();
+
         Driver.getDriver().switchTo().defaultContent();
         click(Driver.getDriver().findElement(By.cssSelector("span.glyphicon.glyphicon-share-alt.zavriOkno.zrcadli")));
         click(Driver.getDriver().findElement(By.cssSelector("a[href='/delete']")));
@@ -304,5 +309,20 @@ public class ReusableMethods {
     }
 
 
+    public static void cartAndCheckout(){
+
+        allPages.vendorProductDashboardPage().cart.click();
+        allPages.vendorCouponsPage().checkoutButton.click();
+    }
+
+    public static void addProductToCart(){
+
+        ReusableMethods.click(allPages.vendorProductDashboardPage().searchBox);
+        allPages.vendorCouponsPage().search.sendKeys(ConfigReader.getProperty("iphone"));
+        allPages.vendorCouponsPage().search.submit();
+        ReusableMethods.click(allPages.productPage().urun);
+        ReusableMethods.click(allPages.vendorProductDashboardPage().addToCartButton);
+
+    }
 
 }

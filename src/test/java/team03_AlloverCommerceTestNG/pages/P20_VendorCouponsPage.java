@@ -70,5 +70,7 @@ public class P20_VendorCouponsPage {
 
     @FindBy(xpath ="//a[@class='cart-toggle']")
     public WebElement cartIcon;
+    @FindBy(xpath ="//input[@aria-label='Search']")
+    public WebElement search;
 
 }
