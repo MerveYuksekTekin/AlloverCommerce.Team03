@@ -1,10 +1,8 @@
 package team03_AlloverCommerceTestNG.tests.US09_VendorRegister;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WindowType;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import team03_AlloverCommerceTestNG.pages.Pages;
@@ -278,7 +276,10 @@ public class US09_TC01_TC16_VendorRegister {
         ExtentReportUtils.extentTestInfo("Register butonuna tıklandı");
 
         // Kayıt işleminin gerçekleşmediği doğrula
-        Assert.assertEquals(ReusableMethods.passwordWrongMessage(), "Confirm Password: This field is required.");
+
+          Assert.assertEquals(ReusableMethods.passwordWrongMessage(), "Confirm Password: This field is required.");
+
+
         ExtentReportUtils.extentTestFail("Kayıt işleminin gerçekleşmemesi gerekiyordu,gerçekleşti!!");
 
 
