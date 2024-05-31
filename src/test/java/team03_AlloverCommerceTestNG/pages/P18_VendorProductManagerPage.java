@@ -46,6 +46,8 @@ public class P18_VendorProductManagerPage {
     @FindBy(xpath = "//li[normalize-space()='Coupon Manager -SPRING23']")
     public WebElement couponCodeVerify;
 
+    @FindBy(xpath = "//div[@class='wcfm-message wcfm-error']")
+    public WebElement errormessage;
     @FindBy (id = "product_type")
     public WebElement dropdownSimpleProduct;
 

@@ -55,8 +55,8 @@ public class US18_VendorAddCoupons {
 
     }
 
-    @Test
-    public void test01() {
+    @Test(priority = 1)
+    public void CouponAddVendor() {
         //Code kutucuguna  coupons kodu yazilabildigini dogrula
         ReusableMethods.scroll(allpages.vendorProductManagerPage().codeBox);
         allpages.vendorProductManagerPage().codeBox.sendKeys(Keys.DELETE, "SPRING20");//Her testte kupon adını degistirmelisin; aynı kupon var diyor yoksa
@@ -125,13 +125,45 @@ public class US18_VendorAddCoupons {
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.click(allpages.vendorProductManagerPage().coupons);
         actions.sendKeys(Keys.PAGE_DOWN).perform();
-        ReusableMethods.waitForSecond(2);
+        ReusableMethods.waitForSecond(3);
 
 
         //Acilan sayfada coupon olusturuldugunu dogrula
         Assert.assertTrue(allpages.vendorProductManagerPage().couponsNewCouponVerifyM.getText().contains("SPRING20"));
+        ReusableMethods.click(allpages.homePage().signOutfiliz);
+        ReusableMethods.click(allpages.myAccountPage().logoutButton);
+
 
     }
 
+    @Test(priority = 2)
+    public void CodeBoxEmptyNegativeScenario() {
+        //Code kutucugu bos birakarak coupon eklenmedigini dogrula
+
+        ReusableMethods.click(allpages.vendorProductManagerPage().descriptionBox);
+        allpages.vendorProductManagerPage().descriptionBox
+                .sendKeys("Bahar sezonu indirimleri için %20 indirim kuponu.");
+        Assert.assertTrue(allpages.vendorProductManagerPage().descriptionBox.getAttribute("value")
+                .contains("Bahar sezonu indirimleri için %20 indirim kuponu."));
+
+
+        ReusableMethods.scroll(allpages.vendorProductManagerPage().discountType);
+        WebElement discountype = allpages.vendorProductManagerPage().discountType;
+        Select select = new Select(discountype);
+        select.selectByVisibleText("Percentage discount");
+
+        ReusableMethods.scroll(allpages.vendorProductManagerPage().couponAmountBox);
+        allpages.vendorProductManagerPage().couponAmountBox.sendKeys(Keys.DELETE, "20");
+        allpages.vendorProductManagerPage().couponsExpiryDate.sendKeys("2024-05-28", Keys.ENTER);
+        allpages.vendorProductManagerPage().AllowFreeShippingCheckbox.click();
+        ReusableMethods.waitForSecond(3);
+
+        ReusableMethods.scroll(allpages.vendorProductManagerPage().couponsSubmitButton);
+        ReusableMethods.waitForSecond(2);
+        ReusableMethods.click(allpages.vendorProductManagerPage().couponsSubmitButton);
+
+        Assert.assertFalse(allpages.vendorProductManagerPage().errormessage.getText().contains("Please insert atleast Coupon Title before submit."));
+
+    }
 
 }

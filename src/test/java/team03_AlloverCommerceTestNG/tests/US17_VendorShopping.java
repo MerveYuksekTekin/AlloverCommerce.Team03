@@ -41,8 +41,10 @@ public class US17_VendorShopping {
 
         //Add to Cart butonuna tikla
         allPages.vendorProductDashboardPage().addToCartButton.click();
+
         //Cart butonuna tikla
         allPages.vendorProductDashboardPage().cart.click();
+
         //Secilen urunlerin sepete eklendigini dogrula
         Assert.assertTrue(allPages.vendorProductDashboardPage().shoppingcart.isDisplayed());
 
@@ -138,6 +140,8 @@ public class US17_VendorShopping {
 
         Assert.assertTrue(allPages.vendorProductDashboardPage()
                 .Verifymessage.getText().contains("Thank you. Your order has been received."));
+
+        ReusableMethods.waitForSecond(3);
 
 
         ReusableMethods.click(allPages.homePage().signOutfiliz);
