@@ -24,7 +24,25 @@ public class P1_HomePage {
 
   @FindBy(xpath = "//span[.='Register']")
     public WebElement registerButton;
+
   @FindBy(xpath = "//span[.='Sign Out']")
    public WebElement signOutfiliz;
 
+
+@FindBy(id = "reg_username")
+    public  WebElement username;
+
+
+@FindBy(id = "reg_email")
+public  WebElement YourEmailaddress;
+
+@FindBy(id = "reg_password")
+public  WebElement password;
+
+@FindBy(id = "register-policy")
+public  WebElement policybox;
+@FindBy(xpath = "//button[@name='register' and @value='Sign Up']")
+public WebElement SignUp;
+//@FindBy(xpath = "//span[text()='Sign Out']");
+//public  WebElement signOut;
 }
