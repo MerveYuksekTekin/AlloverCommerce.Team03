@@ -355,8 +355,10 @@ Assert.assertEquals("Sign Out","Assert.assertEquals(allPages.homePage().signInBu
         
         // Username alanına sadece  sayi karakteri gir
         Faker faker = new Faker();
+        String password = faker.internet().password();
         String us01 = faker.name().username();
-        String usEmail = faker.name().username();
+        String usEmail = faker.internet().emailAddress();
+        
         allPages.homePage().username.sendKeys("516464151");
         
         //  Your Email address alanına bir veri gir
