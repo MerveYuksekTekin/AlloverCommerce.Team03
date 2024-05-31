@@ -52,6 +52,7 @@ public class US17_VendorShopping {
         allPages.vendorProductDashboardPage().checkout.click();
         Assert.assertTrue(allPages.vendorProductDashboardPage().yourorder.isDisplayed());
 
+
     }
 
     @Test(priority = 1)
