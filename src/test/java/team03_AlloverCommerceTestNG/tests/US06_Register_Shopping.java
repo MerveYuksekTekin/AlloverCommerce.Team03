@@ -1,6 +1,7 @@
 package team03_AlloverCommerceTestNG.tests;
 
 import org.openqa.selenium.Keys;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import team03_AlloverCommerceTestNG.pages.P1_HomePage;
 import team03_AlloverCommerceTestNG.pages.P3_UserVendorLoginPage;
@@ -13,32 +14,42 @@ public class US06_Register_Shopping {
 
     Pages allPages = new Pages();
 
-    @Test
-    public void test01() throws InterruptedException{
 
-        P1_HomePage p1HomePage = new P1_HomePage();
-        P3_UserVendorLoginPage p3UVLP = new P3_UserVendorLoginPage();
+    @BeforeMethod
+    public void setUp() {
+        //Web sitesine git
+        Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
+        //Sing In linkine tıkla
+        allPages.homePage().signInButton.click();
+        //Username or email adress kutusuna geçerli bir email adresi gir
+        allPages.userVendorLoginPage().emailBox.sendKeys(ConfigReader.getProperty("email"));
+        //Password kutusuna geçerli bir password gir
+        allPages.userVendorLoginPage().passwordBox.sendKeys(ConfigReader.getProperty("password"));
+        //SING IN butonuna tıkla
+        allPages.userVendorLoginPage().signInButton.click();
+
+
+
+        P7_ShoppingPage p7SP = new P7_ShoppingPage();
+
+    }
+
+    @Test
+    public void TC01_productsearch () throws InterruptedException {
+
+
         P7_ShoppingPage p7SP = new P7_ShoppingPage();
 
 
-        // Site anasayfası açılmalı
-        Driver.getDriver().get(ConfigReader.getProperty("us06URL"));
-
-        // Giriş butonu tıklanır olmalı
-        p1HomePage.signInButton.click();
-
-        // Kayıtlı bir email adresi girilmeli
-        p3UVLP.emailBox.sendKeys(ConfigReader.getProperty("us06name"));
-
-        // Kayıtlı password girilmeli
-        p3UVLP.passwordBox.sendKeys(ConfigReader.getProperty("us06password"));
-
-        // Sign In butonu tıklanır olmalı
-        p3UVLP.signInButton.sendKeys(Keys.ENTER);
-        Thread.sleep(3000);
-
         //İstenilen ürün aratlıabilmeli
         p7SP.searchBox.sendKeys("Men’s Clothing", Keys.ENTER);
+
+    }
+
+    @Test
+    public void TC02_ () throws InterruptedException {
+
+        P7_ShoppingPage p7SP = new P7_ShoppingPage();
 
         //Seçilen ürün sepete eklenebilmeli
         p7SP.addTocart.click();
@@ -72,12 +83,6 @@ public class US06_Register_Shopping {
 
 
         p7SP.placeorder.click();
-
-
-
-
-
-
 
 
     }
