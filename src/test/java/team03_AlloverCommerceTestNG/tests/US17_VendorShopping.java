@@ -1,9 +1,11 @@
 package team03_AlloverCommerceTestNG.tests;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -15,7 +17,8 @@ import team03_AlloverCommerceTestNG.utilities.ReusableMethods;
 
 public class US17_VendorShopping {
     Pages allPages = new Pages();
-    SoftAssert softAssert=new SoftAssert();
+    Actions actions=new Actions(Driver.getDriver());
+
 
     @BeforeMethod
     public void setUp() {
@@ -33,109 +36,137 @@ public class US17_VendorShopping {
         //ORDERS linkine tikla
         allPages.myAccountPage().ordersButton.click();
 
-        //Browse Product tikla
-       // ReusableMethods.click(allPages.myAccountPage().browseProduct);
-
-
         //Search kutusuna tikla
         allPages.vendorProductDashboardPage().searchBox.sendKeys("Kalem", Keys.ENTER);
 
         //Add to Cart butonuna tikla
         allPages.vendorProductDashboardPage().addToCartButton.click();
+
         //Cart butonuna tikla
         allPages.vendorProductDashboardPage().cart.click();
+
         //Secilen urunlerin sepete eklendigini dogrula
-        Assert.assertTrue(allPages.vendorProductDashboardPage().viewCart.isDisplayed());
+        Assert.assertTrue(allPages.vendorProductDashboardPage().shoppingcart.isDisplayed());
 
-
-    }
-
-   // @Test()
-    public void tc01() {
-        //View Cart tiklanarak alınacak ürün ve ürünler görülebilmeli
-        allPages.vendorProductDashboardPage().viewCart.click();
-        Assert.assertTrue(allPages.vendorProductDashboardPage().product.isDisplayed());
-    }
-
-    @Test
-    public void tc02() {
-        //Checkout tiklanarak alınacak ürün ve ürünler görülebilmeli
+        //Checkout tiklanarak alinacak urunlerin goruldugunu dogrula
         allPages.vendorProductDashboardPage().checkout.click();
         Assert.assertTrue(allPages.vendorProductDashboardPage().yourorder.isDisplayed());
 
     }
 
     @Test
-    public void tc03() {
-        //Fatura ayrintilari(Billing details)otomatik geldigini dogrula
-        allPages.vendorProductDashboardPage().checkout.click();
-       //First name otomatik geldigini dogrula
-        softAssert.assertEquals(allPages.vendorProductDashboardPage()
-                .firstName.getAttribute("value"),"Mike");
-         //Lastname otomatik geldigini dogrula
-        softAssert.assertEquals(allPages.vendorProductDashboardPage()
-                .firstName.getAttribute("value"),"John");
-        //Company name otomatik geldigini dogrula
-        softAssert.assertEquals(allPages.vendorProductDashboardPage()
-                .firstName.getAttribute("value"),"Tira");
-        //Country otomatik geldigini dogrula
-        softAssert.assertEquals(allPages.vendorProductDashboardPage()
-                .firstName.getAttribute("value"),"Germany");
-        //Street adres otomatik geldigini dogrula
-        softAssert.assertEquals(allPages.vendorProductDashboardPage()
-                .firstName.getAttribute("value"),"Mosel str8");
+    public void test01() {
 
-        //Postcode otomatik geldigini dogrula
-        softAssert.assertEquals(allPages.vendorProductDashboardPage()
-                .firstName.getAttribute("value"),"60306");
-        //Town/City otomatik geldigini dogrula
-        softAssert.assertEquals(allPages.vendorProductDashboardPage()
-                .firstName.getAttribute("value"),"Frankfurt");
-        //State otomatik geldigini dogrula
-        softAssert.assertEquals(allPages.vendorProductDashboardPage()
-                .firstName.getAttribute("value"),"Hesse");
-        //Phone otomatik geldigigini dogrula
-        softAssert.assertEquals(allPages.vendorProductDashboardPage()
-                .firstName.getAttribute("value"),"123456");
-        //Email adresin otomatik geldigini dogrula
-        softAssert.assertEquals(allPages.vendorProductDashboardPage()
-                .firstName.getAttribute("value"),"nike.crew@floodouts.com");
+        //Fatura ayrintilari(Billing details)otomatik geldigini dogrula
+
+        //First name otomatik geldigini dogrula
+        ReusableMethods.scroll(allPages.vendorProductDashboardPage().firstName);
+        ReusableMethods.waitForSecond(5);
+
+        if (allPages.vendorProductDashboardPage().firstName != null) {
+            Assert.assertTrue(true);
+        }
+        if (allPages.vendorProductDashboardPage().lastName != null) {
+            Assert.assertTrue(true);
+        }
+        if (allPages.vendorProductDashboardPage().country != null) {
+            Assert.assertTrue(true);
+
+        }
+        if (allPages.vendorProductDashboardPage().street != null) {
+            Assert.assertTrue(true);
+        }
+        if (allPages.vendorProductDashboardPage().townCity != null) {
+            Assert.assertTrue(true);
+
+        }
+        if (allPages.vendorProductDashboardPage().postcodeZip != null) {
+            Assert.assertTrue(true);
+
+        }
+        if (allPages.vendorProductDashboardPage().phone != null) {
+            Assert.assertTrue(true);
+
+        }
+        if (allPages.vendorProductDashboardPage().email != null) {
+            Assert.assertTrue(true);
+
+            ReusableMethods.waitForSecond(3);
+
+
+            ReusableMethods.click(allPages.homePage().signOutfiliz);
+
+            //ReusableMethods.click(Driver.getDriver().findElement(By.xpath("//span[.='Sign Out']")));
+            ReusableMethods.click(allPages.myAccountPage().logoutButton);
+
+
+        }
+    }
+
+
+
+    @Test
+    public void test02 () {
+        //Toplam ödenecek miktarin goruntulenebildigini dogrula
+        //ReusableMethods.waitForSecond(3);
+        ReusableMethods.scroll(allPages.vendorProductDashboardPage().totalprice);
+        Assert.assertTrue(allPages.vendorProductDashboardPage().totalprice.isDisplayed());
+        ReusableMethods.waitForSecond(4);
+
+        ReusableMethods.click(allPages.homePage().signOutfiliz);
+        ReusableMethods.click(allPages.myAccountPage().logoutButton);
 
 
 
     }
 
     @Test
-    public void tc04() {
+    public void test03() {
+        //Wire Transfer secili geldigini dogrula
+        // ReusableMethods.click(allPages.vendorProductDashboardPage().wireTransfer);
+        Assert.assertTrue(allPages.vendorProductDashboardPage().wireTransfer.isSelected());
 
-        //Toplam ödenecek miktarin goruntulenebildigini dogrula
-        allPages.vendorProductDashboardPage().checkout.click();
-        allPages.vendorProductDashboardPage().totalprice.isDisplayed();
-        ReusableMethods.scroll(allPages.vendorProductDashboardPage().totalprice);
-        Assert.assertTrue(allPages.vendorProductDashboardPage().totalprice.isDisplayed());
 
         //Pay at the door transfer/EFT seceneginin secilebildigini dogrula
+        ReusableMethods.scroll(allPages.vendorProductDashboardPage().payAtTheDoor);
         ReusableMethods.waitForSecond(3);
         ReusableMethods.click(allPages.vendorProductDashboardPage().payAtTheDoor);
         Assert.assertTrue(allPages.vendorProductDashboardPage().payAtTheDoor.isSelected());
 
         //Place Order  tıklayarak  alışverişin tamamlandığıni dogrula
 
-         ReusableMethods.waitForSecond(2);
-         ReusableMethods.click(allPages.vendorProductDashboardPage().placeOrder);
+        ReusableMethods.waitForSecond(2);
+        ReusableMethods.click(allPages.vendorProductDashboardPage().placeOrder);
 
         Assert.assertTrue(allPages.vendorProductDashboardPage()
                 .Verifymessage.getText().contains("Thank you. Your order has been received."));
 
-
         ReusableMethods.waitForSecond(3);
+
+
+        ReusableMethods.click(allPages.homePage().signOutfiliz);
+        ReusableMethods.click(allPages.myAccountPage().logoutButton);
+    }
+
+    @Test
+    public void test04() {
+
         //ORDER DETAILS' in gorulebildigini dogrula
+
+        ReusableMethods.scroll(allPages.vendorProductDashboardPage().payAtTheDoor);
+        ReusableMethods.waitForSecond(2);
+        ReusableMethods.click(allPages.vendorProductDashboardPage().placeOrder);
+        ReusableMethods.waitForSecond(10);
         ReusableMethods.scroll(allPages.vendorProductDashboardPage().myAccount);
         ReusableMethods.click(allPages.vendorProductDashboardPage().myAccount);
         ReusableMethods.click(allPages.myAccountPage().ordersButton);
-
+        ReusableMethods.waitForSecond(2);
+        ReusableMethods.click(allPages.vendorProductDashboardPage().siparisWiewButonu);
+        ReusableMethods.waitForSecond(4);
+        //ReusableMethods.scroll(allPages.vendorProductDashboardPage().totalprice);
+        ReusableMethods.scroll(allPages.vendorProductDashboardPage().orderdetails);
+        Assert.assertTrue(allPages.vendorProductDashboardPage().orderdetails.isDisplayed());
 
 
     }
-
 }

@@ -1,5 +1,4 @@
 package team03_AlloverCommerceTestNG.pages;
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -20,6 +19,8 @@ public class P17_VendorProductDashboardPage {
 
     @FindBy(xpath = "(//i)[6]")
     public WebElement cart;
+    @FindBy(xpath = "(//*[@class='cart-title'])[1]")
+    public WebElement shoppingcart;
 
     @FindBy(xpath = "//a[@class='button checkout wc-forward']")
     public WebElement checkout;
@@ -40,6 +41,10 @@ public class P17_VendorProductDashboardPage {
     public WebElement street;
     @FindBy(xpath = "//span[@title='Germany']")
     public WebElement country;
+    @FindBy(id = "billing_company")
+    WebElement companyname;
+    @FindBy(xpath = "//span[@title='Germany']")
+    public WebElement countryname;
     @FindBy(xpath = "//input[@value='60603']")
     public WebElement postcodeZip;
     @FindBy(xpath = "//input[@value='Frankfurt']")
@@ -74,6 +79,11 @@ public class P17_VendorProductDashboardPage {
     @FindBy(xpath = "//*[.='Add New']")
     public WebElement addNewButton;
 
+    @FindBy(xpath = "//*[.='Order details']")
+    public WebElement orderdetails;
+
+    @FindBy(xpath = "(//td)[5]")
+    public WebElement siparisWiewButonu;
 
 
 
