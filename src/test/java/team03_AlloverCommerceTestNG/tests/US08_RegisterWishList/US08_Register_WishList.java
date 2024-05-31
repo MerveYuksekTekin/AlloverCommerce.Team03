@@ -1,4 +1,4 @@
-package team03_AlloverCommerceTestNG.tests;
+package team03_AlloverCommerceTestNG.tests.US08_RegisterWishList;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
