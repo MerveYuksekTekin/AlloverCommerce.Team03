@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import team03_AlloverCommerceTestNG.pages.Pages;
@@ -39,12 +40,15 @@ public class US18_VendorAddCoupons {
         //Sign outa tikla
         allpages.homePage().signOutButton.click();
 
-
+        //Store menager butonun tikla
         allpages.myAccountPage().storeManagerButton.click();
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.waitForSecond(3);
+
+        //Couponsa tikla
         allpages.vendorProductManagerPage().coupons.click();
 
+        //Add news coupona tikla
         ReusableMethods.click(allpages.vendorProductManagerPage().addNewCoupon);
         ReusableMethods.scroll(allpages.vendorProductManagerPage().addNewCoupon);
         allpages.vendorProductManagerPage().addNewCoupon.click();
@@ -55,10 +59,11 @@ public class US18_VendorAddCoupons {
     public void test01() {
         //Code kutucuguna  coupons kodu yazilabildigini dogrula
         ReusableMethods.scroll(allpages.vendorProductManagerPage().codeBox);
-        allpages.vendorProductManagerPage().codeBox.sendKeys(Keys.DELETE,"SPRINGSALE20");//Her testte kupon adını degistirmelisin; aynı kupon var diyor yoksa
+        allpages.vendorProductManagerPage().codeBox.sendKeys(Keys.DELETE, "SPRING20");//Her testte kupon adını degistirmelisin; aynı kupon var diyor yoksa
         Assert.assertTrue(allpages.vendorProductManagerPage().codeBox.getAttribute("value")
-                .contains("SPRINGSALE20"));
-       ReusableMethods.waitForSecond(2);
+                .contains("SPRING20"));
+        ReusableMethods.waitForSecond(2);
+
         //Description kismina aciklama yazilabildigini dogrula
         ReusableMethods.click(allpages.vendorProductManagerPage().descriptionBox);
         allpages.vendorProductManagerPage().descriptionBox
@@ -67,35 +72,35 @@ public class US18_VendorAddCoupons {
                 .contains("Bahar sezonu indirimleri için %20 indirim kuponu."));
 
         //Discount Type; Percentage discount secilebildigini dogrula
-        WebElement discountype=allpages.vendorProductManagerPage().discountType;
-        Select select=new Select(discountype);
+        WebElement discountype = allpages.vendorProductManagerPage().discountType;
+        Select select = new Select(discountype);
         select.selectByVisibleText("Percentage discount");
-        String seciliDiscount1=select.getFirstSelectedOption().getText();
-        Assert.assertEquals(seciliDiscount1,"Percentage discount");
+        String seciliDiscount1 = select.getFirstSelectedOption().getText();
+        Assert.assertEquals(seciliDiscount1, "Percentage discount");
 
 
         ReusableMethods.waitForSecond(2);
 
         //Discount Type; Fixed Product Discount secilebilmeldigini dogrula
         ReusableMethods.scroll(allpages.vendorProductManagerPage().discountType);
-        WebElement fixedproduct=allpages.vendorProductManagerPage().discountType;
-        Select select1=new Select(fixedproduct);
+        WebElement fixedproduct = allpages.vendorProductManagerPage().discountType;
+        Select select1 = new Select(fixedproduct);
         select.selectByVisibleText("Fixed Product Discount");
-        String seciliDiscount2=select.getFirstSelectedOption().getText();
-        Assert.assertEquals(seciliDiscount2,"Fixed Product Discount");
+        String seciliDiscount2 = select.getFirstSelectedOption().getText();
+        Assert.assertEquals(seciliDiscount2, "Fixed Product Discount");
 
         ////Coupon amount yazilabildigini dogrula
         ReusableMethods.scroll(allpages.vendorProductManagerPage().couponAmountBox);
-        allpages.vendorProductManagerPage().couponAmountBox.sendKeys(Keys.DELETE,"50");
+        allpages.vendorProductManagerPage().couponAmountBox.sendKeys(Keys.DELETE, "20");
         Assert.assertEquals(allpages.vendorProductManagerPage().
-        couponAmountBox.getAttribute("value"),"50");
+                couponAmountBox.getAttribute("value"), "20");
 
 
         //Coupon Expiry date girilebildigini dogrula
         ReusableMethods.scroll(allpages.vendorProductManagerPage().couponsExpiryDate);
-        allpages.vendorProductManagerPage().couponsExpiryDate.sendKeys("2024-05-28",Keys.ENTER);
+        allpages.vendorProductManagerPage().couponsExpiryDate.sendKeys("2024-05-28", Keys.ENTER);
         Assert.assertEquals(allpages.vendorProductManagerPage().
-                couponsExpiryDate.getAttribute("value"),"2024-05-28");
+                couponsExpiryDate.getAttribute("value"), "2024-05-28");
 
         //Allow free shipping secilebildigini dogrula
         ReusableMethods.waitForSecond(2);
@@ -104,19 +109,29 @@ public class US18_VendorAddCoupons {
 
         //Show one store secilebildigini dogrula
         ReusableMethods.scroll(allpages.vendorProductManagerPage().ShowOnStoreCheckbox);
-        //ReusableMethods.waitForSecond(2);
         allpages.vendorProductManagerPage().ShowOnStoreCheckbox.click();
         ReusableMethods.waitForSecond(3);
+        Assert.assertTrue(allpages.vendorProductManagerPage().ShowOnStoreCheckbox.isSelected());
 
-        //Coupon olusturuldugunu dogrula
-
+        //Submit butonuna tikla
         ReusableMethods.scroll(allpages.vendorProductManagerPage().couponsSubmitButton);
         ReusableMethods.waitForSecond(2);
         ReusableMethods.click(allpages.vendorProductManagerPage().couponsSubmitButton);
+
+
+
+        //Coupons butonuna tikla
+        ReusableMethods.waitForSecond(5);
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        ReusableMethods.click(allpages.vendorProductManagerPage().coupons);
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.waitForSecond(2);
+
+
+        //Acilan sayfada coupon olusturuldugunu dogrula
+        Assert.assertTrue(allpages.vendorProductManagerPage().couponsNewCouponVerifyM.getText().contains("SPRING20"));
 
     }
 
+
 }
-
-

@@ -1,5 +1,6 @@
 package team03_AlloverCommerceTestNG.pages;
 
+import org.openqa.selenium.WebDriver;
 
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -38,8 +39,12 @@ public class P18_VendorProductManagerPage {
     @FindBy(xpath = "(//input[@type='submit'])[1]")
     public WebElement couponsSubmitButton;
 
+    @FindBy(xpath = "//table")
 
+    public WebElement couponsNewCouponVerifyM;
 
+    @FindBy(xpath = "//li[normalize-space()='Coupon Manager -SPRING23']")
+    public WebElement couponCodeVerify;
 
     @FindBy (id = "product_type")
     public WebElement dropdownSimpleProduct;
@@ -87,7 +92,7 @@ public class P18_VendorProductManagerPage {
     public WebElement productTitle;
 
 
-   
+
 
     @FindBy(xpath = "//*[@value='998']")
     public WebElement categoryArabalar;
@@ -116,7 +121,7 @@ public class P18_VendorProductManagerPage {
 
     @FindBy(id = "wcfm_new_product_brand")
     public  WebElement productName;
-  
+
     @FindBy(id = "wcfm_new_parent_product_brand")
     public  WebElement parentTaxonomyButton;
 
@@ -129,7 +134,7 @@ public class P18_VendorProductManagerPage {
     public WebElement addParentButton;
 
     @FindBy(id= "featured_img_display")
-     public WebElement imageverify;
+    public WebElement imageverify;
 
     @FindBy (id="gallery_img_gimage_0_display")
     public  WebElement uploadsmallphoto;
@@ -137,8 +142,8 @@ public class P18_VendorProductManagerPage {
     @FindBy (xpath = "(//button[.='Add to Gallery'])[2]")
     public  WebElement addGalleryButton;
 
-     @FindBy (id ="tinymce")
-     public WebElement shortDes;
+    @FindBy (id ="tinymce")
+    public WebElement shortDes;
 
     @FindBy (id ="tinymce")
     public WebElement des;
@@ -178,72 +183,72 @@ public class P18_VendorProductManagerPage {
 
     @FindBy(xpath = "//*[.='Inventory']")
     public WebElement menuInventory;
-     @FindBy(xpath = "//*[.='Shipping']")
+    @FindBy(xpath = "//*[.='Shipping']")
     public WebElement menuShipping;
-     @FindBy(xpath = "//div[.='Attributes']")
+    @FindBy(xpath = "//div[.='Attributes']")
     public WebElement menuAttributes;
-     @FindBy(xpath = "//div[.='Linked']")
+    @FindBy(xpath = "//div[.='Linked']")
     public WebElement menuLinked;
 
     @FindBy(id ="wcfm_products_manage_form_yoast_head")
-      public WebElement menuSEO;
+    public WebElement menuSEO;
 
     @FindBy(xpath = "//div[.='Advanced']")
-      public WebElement menuAdvanced;
+    public WebElement menuAdvanced;
 
-      @FindBy(id = "sku")
-      public WebElement boxSku;
+    @FindBy(id = "sku")
+    public WebElement boxSku;
 
-      @FindBy(id = "manage_stock")
-      public WebElement boxManageStock;
+    @FindBy(id = "manage_stock")
+    public WebElement boxManageStock;
 
-      @FindBy(id = "stock_qty")
-      public WebElement boxStockQty;
+    @FindBy(id = "stock_qty")
+    public WebElement boxStockQty;
 
-      @FindBy(id = "backorders")
-      public WebElement boxAllowBackorders;
+    @FindBy(id = "backorders")
+    public WebElement boxAllowBackorders;
 
-      @FindBy(id = "sold_individually")
-      public WebElement boxSoldIndividually;
+    @FindBy(id = "sold_individually")
+    public WebElement boxSoldIndividually;
 
-     @FindBy(id = "stock_status")
-      public WebElement boxStockStatus;
+    @FindBy(id = "stock_status")
+    public WebElement boxStockStatus;
 
-      @FindBy(id = "weight")
-      public WebElement weightBox;
+    @FindBy(id = "weight")
+    public WebElement weightBox;
 
-@FindBy(id = "length")
-      public WebElement lengthBox;
+    @FindBy(id = "length")
+    public WebElement lengthBox;
 
-@FindBy(xpath = "//input[@name='width']")
-      public WebElement widthBox;
+    @FindBy(xpath = "//input[@name='width']")
+    public WebElement widthBox;
 
-@FindBy(id = "height")
-      public WebElement heightBox;
+    @FindBy(id = "height")
+    public WebElement heightBox;
 
-@FindBy(id = "shipping_class")
-      public WebElement dropdownShipping;
+    @FindBy(id = "shipping_class")
+    public WebElement dropdownShipping;
 
-@FindBy(id = "_wcfmmp_processing_time")
-      public WebElement dropdownProcessingTime;
+    @FindBy(id = "_wcfmmp_processing_time")
+    public WebElement dropdownProcessingTime;
 
-@FindBy(id = "attributes_is_active_1")
-      public WebElement colorCheckBox;
+    @FindBy(id = "attributes_is_active_1")
+    public WebElement colorCheckBox;
 
-@FindBy(id = "attributes_is_active_2")
-      public WebElement sizeCheckBox;
+    @FindBy(id = "attributes_is_active_2")
+    public WebElement sizeCheckBox;
 
-@FindBy(xpath = "(//input[@placeholder='Search for an attribute ...'])[1]")
-      public WebElement colorDropdown;
+    @FindBy(xpath = "(//input[@placeholder='Search for an attribute ...'])[1]")
+    public WebElement colorDropdown;
 
-@FindBy(xpath = "(//*[@class='select2-search__field'])[3]")
-      public WebElement sizeDropdown;
+    @FindBy(xpath = "(//*[@class='select2-search__field'])[3]")
+    public WebElement sizeDropdown;
 
-@FindBy (id = "attributes_is_visible_1")
-      public WebElement visibilityCheckBox1;
+    @FindBy (id = "attributes_is_visible_1")
+    public WebElement visibilityCheckBox1;
 
-@FindBy(id = "attributes_is_visible_2")
-      public WebElement visibilityCheckBox2;
+    @FindBy(id = "attributes_is_visible_2")
+    public WebElement visibilityCheckBox2;
 
 
 

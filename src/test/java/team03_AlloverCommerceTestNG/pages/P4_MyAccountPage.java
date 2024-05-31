@@ -48,10 +48,9 @@ public class P4_MyAccountPage {
     public WebElement followingsButton;
 
 
-    @FindBy(xpath = "//*[text()='Logout']")
+
 
     @FindBy(linkText = "Log out")
-
     public WebElement logoutButton;
 
     @FindBy(xpath= "//*[.='Actions']")
