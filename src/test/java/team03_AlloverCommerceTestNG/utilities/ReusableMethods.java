@@ -23,7 +23,7 @@ import java.util.List;
 
 public class ReusableMethods {
 
-    static Pages allPages = new Pages();
+    public static Pages allPages = new Pages();
     public static void userVendorlogin(String email, String password) {
         allPages.userVendorLoginPage().emailBox.sendKeys(email);
         allPages.userVendorLoginPage().passwordBox.sendKeys(password);
