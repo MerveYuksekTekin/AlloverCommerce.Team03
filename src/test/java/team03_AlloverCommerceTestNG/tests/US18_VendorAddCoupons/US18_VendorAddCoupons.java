@@ -1,4 +1,4 @@
-package team03_AlloverCommerceTestNG.tests;
+package team03_AlloverCommerceTestNG.tests.US18_VendorAddCoupons;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -18,7 +18,6 @@ import team03_AlloverCommerceTestNG.utilities.Driver;
 import team03_AlloverCommerceTestNG.utilities.ReusableMethods;
 
 import java.time.Duration;
-
 
 public class US18_VendorAddCoupons {
     Pages allpages =new Pages();

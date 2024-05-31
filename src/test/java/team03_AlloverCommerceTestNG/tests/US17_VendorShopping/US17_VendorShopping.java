@@ -1,4 +1,4 @@
-package team03_AlloverCommerceTestNG.tests;
+package team03_AlloverCommerceTestNG.tests.US17_VendorShopping;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -54,8 +54,8 @@ public class US17_VendorShopping {
 
     }
 
-    @Test
-    public void test01() {
+    @Test(priority = 1)
+    public void BillingDetailsOtomatic() {
 
         //Fatura ayrintilari(Billing details)otomatik geldigini dogrula
 
@@ -105,8 +105,8 @@ public class US17_VendorShopping {
 
 
 
-    @Test
-    public void test02 () {
+    @Test(priority = 2)
+    public void ToplamRakam () {
         //Toplam ödenecek miktarin goruntulenebildigini dogrula
         //ReusableMethods.waitForSecond(3);
         ReusableMethods.scroll(allPages.vendorProductDashboardPage().totalprice);
@@ -120,8 +120,8 @@ public class US17_VendorShopping {
 
     }
 
-    @Test
-    public void test03() {
+    @Test(priority = 3)
+    public void ShoppingSucces() {
         //Wire Transfer secili geldigini dogrula
         // ReusableMethods.click(allPages.vendorProductDashboardPage().wireTransfer);
         Assert.assertTrue(allPages.vendorProductDashboardPage().wireTransfer.isSelected());
@@ -148,8 +148,8 @@ public class US17_VendorShopping {
         ReusableMethods.click(allPages.myAccountPage().logoutButton);
     }
 
-    @Test
-    public void test04() {
+    @Test(priority = 4)
+    public void OrderDetails() {
 
         //ORDER DETAILS' in gorulebildigini dogrula
 
