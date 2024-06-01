@@ -22,11 +22,16 @@ public class P1_HomePage {
     @FindBy(partialLinkText = "My Account")
     public WebElement myAccountButton;
 
-@FindBy(xpath = "//span[.='Register']")
+  @FindBy(xpath = "//span[.='Register']")
     public WebElement registerButton;
+
+  @FindBy(xpath = "//span[.='Sign Out']")
+   public WebElement signOutfiliz;
+
 
 @FindBy(id = "reg_username")
     public  WebElement username;
+
 
 @FindBy(id = "reg_email")
 public  WebElement YourEmailaddress;
