@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Team 3">
+    <listeners>
+        <listener class-name="team03_AlloverCommerceTestNG.utilities.ExtentReportsListener"></listener>
+    </listeners>
+    <test name="US20">
+        <packages>
+            <package name="team03_AlloverCommerceTestNG.tests.US20_VendorCouponsShopping"></package>
+        </packages>
+    </test>
+
+
+
+</suite>
