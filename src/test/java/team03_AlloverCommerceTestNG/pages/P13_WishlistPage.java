@@ -37,7 +37,7 @@ public class P13_WishlistPage {
     @FindBy(xpath ="(//p/a)[1]")
     public WebElement viewCartButton;
 
-    @FindBy(className ="wc-proceed-to-checkout")
+    @FindBy(partialLinkText ="Proceed to checkout ")
     public WebElement proceedToCheckout;
     @FindBy (css = "div[data-fragment-ref='21379']")
     public WebElement wishList;

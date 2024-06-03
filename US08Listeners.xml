@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="team3">
+<suite name="Team 3">
     <listeners>
         <listener class-name="team03_AlloverCommerceTestNG.utilities.ExtentReportsListener"></listener>
     </listeners>
-    <test name="US13">
+    <test name="US08">
         <packages>
-            <package name="team03_AlloverCommerceTestNG.tests.US13_VendorShipping"></package>
+            <package name="team03_AlloverCommerceTestNG.tests.US08_Register_WishList"></package>
         </packages>
     </test>
-    
-    
-    
+
+
+
 </suite>
