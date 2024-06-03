@@ -43,6 +43,6 @@ public  WebElement password;
 public  WebElement policybox;
 @FindBy(xpath = "//button[@name='register' and @value='Sign Up']")
 public WebElement SignUp;
-//@FindBy(xpath = "//span[text()='Sign Out']");
-//public  WebElement signOut;
+@FindBy(xpath = "//p[@class='submit-status' and contains(text(), 'An account is already registered with that username. Please choose another.')]")
+public  WebElement  AnaccountisAlreadyregisteredwiththatusername;
 }

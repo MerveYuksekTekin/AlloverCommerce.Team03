@@ -9,10 +9,10 @@ public class P8_ProductPage {
     public P8_ProductPage() {PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    @FindBy(xpath = "(//*[@class='product-name'])[1]")
+    @FindBy(className = "cart_item")
     public WebElement productName;
 
-    @FindBy(className = "cart_item")
+    @FindBy(xpath = "(//h2/a)[1]")
     public WebElement productInfo;
 
     @FindBy (css = "img[height='182']")
@@ -35,6 +35,8 @@ public class P8_ProductPage {
 
     @FindBy(className="page-content")
     public WebElement products;
+    @FindBy(css="div[id='order_review']")
+    public WebElement yourOrder;
 
 
 }
