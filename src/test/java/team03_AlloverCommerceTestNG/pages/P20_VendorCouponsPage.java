@@ -54,7 +54,7 @@ public class P20_VendorCouponsPage {
 
     @FindBy(xpath = "(//a[@href='https://allovercommerce.com/my-account-2/orders/'])[1]")
     public WebElement ordersLink;
-    @FindBy(xpath = "(//a[@href='https://allovercommerce.com/my-account-2/view-order/55691/'])[2]")
+    @FindBy(xpath = "(//td/a)[2]")
     public WebElement viewButton;
 
     @FindBy(className = "showcoupon")
@@ -72,5 +72,18 @@ public class P20_VendorCouponsPage {
     public WebElement cartIcon;
     @FindBy(xpath ="//input[@aria-label='Search']")
     public WebElement search;
+    @FindBy(xpath ="//section/table")
+    public WebElement ordersDetails;
 
+    @FindBy(xpath ="(//a[@data-product_id='54240'])[1]")
+    public WebElement handbagClose;
+
+    @FindBy(css ="div[class='woocommerce-notices-wrapper']")
+    public WebElement cartVerify;
+
+    @FindBy(css = "a[href='https://allovercommerce.com/my-account-2/customer-logout/']")
+    public WebElement signOutMine;
+
+    @FindBy(linkText = "Logout")
+    public WebElement logoutMine;
 }

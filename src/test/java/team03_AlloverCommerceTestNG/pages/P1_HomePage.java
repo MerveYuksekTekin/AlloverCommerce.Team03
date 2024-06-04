@@ -22,11 +22,16 @@ public class P1_HomePage {
     @FindBy(partialLinkText = "My Account")
     public WebElement myAccountButton;
 
-@FindBy(xpath = "//span[.='Register']")
+  @FindBy(xpath = "//span[.='Register']")
     public WebElement registerButton;
+
+  @FindBy(xpath = "//span[.='Sign Out']")
+   public WebElement signOutfiliz;
+
 
 @FindBy(id = "reg_username")
     public  WebElement username;
+
 
 @FindBy(id = "reg_email")
 public  WebElement YourEmailaddress;
@@ -38,6 +43,6 @@ public  WebElement password;
 public  WebElement policybox;
 @FindBy(xpath = "//button[@name='register' and @value='Sign Up']")
 public WebElement SignUp;
-//@FindBy(xpath = "//span[text()='Sign Out']");
-//public  WebElement signOut;
+@FindBy(xpath = "//p[@class='submit-status' and contains(text(), 'An account is already registered with that username. Please choose another.')]")
+public  WebElement  AnaccountisAlreadyregisteredwiththatusername;
 }
