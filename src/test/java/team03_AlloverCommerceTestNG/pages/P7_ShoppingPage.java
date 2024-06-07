@@ -21,14 +21,28 @@ public class P7_ShoppingPage {
     @FindBy(xpath = "//*[@id=\"header\"]/div/div/div/div/div/div[6]/div/div")
     public WebElement cart;
 
-    @FindBy(xpath = "///button[@name='update_cart']")
+    @FindBy(xpath = "//button[@name='update_cart']")
     public WebElement updateCart;
+
+    @FindBy(xpath = "//h1[@class='product_title entry-title']")
+    public WebElement mensclothing;
+
+    @FindBy(xpath = "//li[@class='no-product']")
+    public WebElement noProducts;
+
+    @FindBy(xpath = "//td[@data-title='Product']")
+    public WebElement trueCart;
 
     @FindBy(xpath = "//*[@id=\"header\"]/div/div/div/div/div/div[6]/div/div/div[2]/div/p[2]/a[1]")
     public WebElement viewcart;
 
     @FindBy(xpath = "//button[@title='Plus']")
     public WebElement buttonPlus;
+
+    @FindBy(xpath = "//input[@value='2']")
+    public WebElement valuePlus;
+
+
 
     @FindBy(xpath = "//button[@title='Minus']")
     public WebElement buttonMinus;
