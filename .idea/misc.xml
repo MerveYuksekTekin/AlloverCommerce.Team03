@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ExternalStorageConfigurationManager" enabled="true" />
+
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
@@ -10,7 +10,7 @@
     <option name="workspaceImportForciblyTurnedOn" value="true" />
   </component>
 
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="corretto-17" project-jdk-type="JavaSDK">
+
 
 
  
@@ -32,7 +32,7 @@
  
 
 
->>>>>>> efa849370ed510098d78982531216cf49aa8411b
+
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
